@@ -13,7 +13,7 @@ function createServer() {
   useRoutes(server);
 
   //server.listen(getEnvProperty(ENV.PORT));
-  server.listen(6666);
+  server.listen(5555);
 }
 
 function useMiddlewares(server: Express) {
