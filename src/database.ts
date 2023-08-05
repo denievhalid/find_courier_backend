@@ -4,7 +4,8 @@ import getEnvProperty from "./utils/getEnvProperty";
 import { ENV } from "./constants";
 
 async function createDatabaseConnection(): Promise<Mongoose> {
-  return mongoose.connect(getEnvProperty(ENV.MONGOOSE_URI) as string);
+  //return mongoose.connect(getEnvProperty(ENV.MONGOOSE_URI) as string);
+  return mongoose.connect("mongodb://localhost:27017/courier");
 }
 
 export { createDatabaseConnection };
