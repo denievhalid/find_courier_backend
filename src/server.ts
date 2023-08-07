@@ -23,7 +23,7 @@ function useMiddlewares(server: Express) {
 
 function useRoutes(server: Express) {
   server.get("/", (req, res) => {
-    res.send("hello 2");
+    res.send("hello 2 444");
   });
   server.use(ROUTES.ORDER, orderRoutes);
 }
