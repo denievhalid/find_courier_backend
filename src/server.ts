@@ -23,6 +23,9 @@ function useMiddlewares(server: Express) {
 }
 
 function useRoutes(server: Express) {
+  server.get("/", (req, res) => {
+    res.send("hello");
+  });
   server.use(ROUTES.ORDER, orderRoutes);
 }
 

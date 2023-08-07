@@ -7,14 +7,14 @@ exports.createServer = void 0;
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const getEnvProperty_1 = __importDefault(require("./utils/getEnvProperty"));
 const orderRoutes_1 = __importDefault(require("./routes/orderRoutes"));
 const constants_1 = require("./constants");
 function createServer() {
     const server = (0, express_1.default)();
     useMiddlewares(server);
     useRoutes(server);
-    server.listen((0, getEnvProperty_1.default)(constants_1.ENV.PORT));
+    //server.listen(getEnvProperty(ENV.PORT));
+    server.listen(2222);
 }
 exports.createServer = createServer;
 function useMiddlewares(server) {

@@ -14,11 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDatabaseConnection = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const getEnvProperty_1 = __importDefault(require("./utils/getEnvProperty"));
-const constants_1 = require("./constants");
 function createDatabaseConnection() {
     return __awaiter(this, void 0, void 0, function* () {
-        return mongoose_1.default.connect((0, getEnvProperty_1.default)(constants_1.ENV.MONGOOSE_URI));
+        //return mongoose.connect(getEnvProperty(ENV.MONGOOSE_URI) as string);
+        return mongoose_1.default.connect("mongodb://127.0.0.1:27017/courier");
     });
 }
 exports.createDatabaseConnection = createDatabaseConnection;
