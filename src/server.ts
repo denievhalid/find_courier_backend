@@ -17,8 +17,20 @@ function createServer() {
 
 function useMiddlewares(server: Express) {
   //server.use(cors());
-  server.use(bodyParser.json());
-  server.use(bodyParser.urlencoded({ extended: true }));
+  server.use(express.json());
+  server.use(express.urlencoded({ extended: true }));
+  server.use((_, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
+    );
+    next();
+  });
 }
 
 function useRoutes(server: Express) {
