@@ -23,11 +23,9 @@ export const createOrder = async (req: Request, res: Response) => {
       body: { images, title, price },
     } = req;
 
-    console.log(req.body);
-
-    await create({ images, title, price });
-    return res.send("200");
+    const order = await create({ images, title, price });
+    return res.json(order);
   } catch (err) {
-    return res.send(err);
+    return res.json(err);
   }
 };

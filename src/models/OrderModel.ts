@@ -12,6 +12,18 @@ const schema = new mongoose.Schema({
   images: {
     type: [String],
   },
+  from: {
+    type: String,
+    required: true,
+  },
+  to: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
 });
 
 export default mongoose.model("Order", schema);

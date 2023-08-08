@@ -16,28 +16,14 @@ function createServer() {
 }
 
 function useMiddlewares(server: Express) {
-  //server.use(cors());
-  server.use(express.json());
-  server.use(express.urlencoded({ extended: true }));
-  server.use((_, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PUT, PATCH, DELETE"
-    );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization"
-    );
-    next();
-  });
+  server.use(cors());
+  server.use(bodyParser.json());
+  //server.use(bodyParser.urlencoded({ extended: true }));
 }
 
 function useRoutes(server: Express) {
-  server.get("/", (req, res) => {
-    res.send("123");
-  });
   server.use(ROUTES.ORDER, orderRoutes);
+  server.use(ROUTES.USER, useRoutes);
 }
 
 export { createServer };

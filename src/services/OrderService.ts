@@ -1,7 +1,8 @@
 import { OrderType } from "../types";
 import OrderModel from "../models/OrderModel";
+import BaseService from "./BaseService";
 
-class OrderService {
+class OrderService extends BaseService {
   static async getOne() {
     return OrderModel.findOne();
   }
