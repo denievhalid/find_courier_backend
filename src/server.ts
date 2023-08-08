@@ -13,13 +13,12 @@ function createServer() {
   useRoutes(server);
 
   server.listen(getEnvProperty(ENV.PORT));
-  //server.listen(2222);
 }
 
 function useMiddlewares(server: Express) {
-  server.use(cors());
+  //server.use(cors());
   server.use(bodyParser.json());
-  server.use(bodyParser.urlencoded({ extended: false }));
+  server.use(bodyParser.urlencoded({ extended: true }));
 }
 
 function useRoutes(server: Express) {
