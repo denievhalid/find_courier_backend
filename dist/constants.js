@@ -7,4 +7,5 @@ exports.ENV = {
 };
 exports.ROUTES = {
     ORDER: "/order",
+    USER: "/user",
 };

@@ -16,5 +16,17 @@ const schema = new mongoose_1.default.Schema({
     images: {
         type: [String],
     },
+    from: {
+        type: String,
+        required: true,
+    },
+    to: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: Date,
+        required: true,
+    },
 });
 exports.default = mongoose_1.default.model("Order", schema);

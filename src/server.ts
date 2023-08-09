@@ -5,6 +5,7 @@ import type { Express } from "express";
 import getEnvProperty from "./utils/getEnvProperty";
 import orderRoutes from "./routes/orderRoutes";
 import { ENV, ROUTES } from "./constants";
+import userRoutes from "./routes/userRoutes";
 
 function createServer() {
   const server: Express = express();
@@ -18,12 +19,12 @@ function createServer() {
 function useMiddlewares(server: Express) {
   server.use(cors());
   server.use(bodyParser.json());
-  //server.use(bodyParser.urlencoded({ extended: true }));
+  server.use(bodyParser.urlencoded({ extended: true }));
 }
 
 function useRoutes(server: Express) {
   server.use(ROUTES.ORDER, orderRoutes);
-  server.use(ROUTES.USER, useRoutes);
+  server.use(ROUTES.USER, userRoutes);
 }
 
 export { createServer };

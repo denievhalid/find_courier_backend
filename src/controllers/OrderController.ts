@@ -20,10 +20,10 @@ export const getOrder = async (req: Request, res: Response) => {
 export const createOrder = async (req: Request, res: Response) => {
   try {
     const {
-      body: { images, title, price },
+      body: { date, from, to, images, title, price },
     } = req;
 
-    const order = await create({ images, title, price });
+    const order = await create({ date, from, to, images, title, price });
     return res.json(order);
   } catch (err) {
     return res.json(err);

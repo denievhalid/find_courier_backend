@@ -33,13 +33,12 @@ const getOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getOrder = getOrder;
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { body: { images, title, price }, } = req;
-        console.log(req.body);
-        yield create({ images, title, price });
-        return res.send("200");
+        const { body: { date, from, to, images, title, price }, } = req;
+        const order = yield create({ date, from, to, images, title, price });
+        return res.json(order);
     }
     catch (err) {
-        return res.send(err);
+        return res.json(err);
     }
 });
 exports.createOrder = createOrder;

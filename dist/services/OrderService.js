@@ -13,7 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const OrderModel_1 = __importDefault(require("../models/OrderModel"));
-class OrderService {
+const BaseService_1 = __importDefault(require("./BaseService"));
+class OrderService extends BaseService_1.default {
     static getOne() {
         return __awaiter(this, void 0, void 0, function* () {
             return OrderModel_1.default.findOne();
