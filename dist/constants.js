@@ -6,6 +6,6 @@ exports.ENV = {
     MONGOOSE_URI: "mongoose_uri",
 };
 exports.ROUTES = {
-    ORDER: "/order",
-    USER: "/user",
+    ADS: "/ads",
+    USERS: "/users",
 };
