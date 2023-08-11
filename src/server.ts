@@ -6,6 +6,7 @@ import getEnvProperty from "./utils/getEnvProperty";
 import orderRoutes from "./routes/orderRoutes";
 import { ENV, ROUTES } from "./constants";
 import userRoutes from "./routes/userRoutes";
+import adsRoutes from "./routes/adsRoutes";
 
 function createServer() {
   const server: Express = express();
@@ -23,8 +24,8 @@ function useMiddlewares(server: Express) {
 }
 
 function useRoutes(server: Express) {
-  server.use(ROUTES.ORDER, orderRoutes);
-  server.use(ROUTES.USER, userRoutes);
+  server.use(ROUTES.ADS, adsRoutes);
+  server.use(ROUTES.USERS, userRoutes);
 }
 
 export { createServer };

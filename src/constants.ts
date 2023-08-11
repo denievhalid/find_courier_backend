@@ -4,6 +4,6 @@ export const ENV = {
 };
 
 export const ROUTES = {
-  ORDER: "/order",
-  USER: "/user",
+  ADS: "/ads",
+  USERS: "/users",
 };

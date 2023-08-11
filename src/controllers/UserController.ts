@@ -1,3 +1,7 @@
-export const login = async () => {};
+class UserController {
+  login() {}
 
-export const register = async () => {};
+  register() {}
+}
+
+export default new UserController();
