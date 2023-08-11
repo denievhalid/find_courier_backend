@@ -3,7 +3,6 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import type { Express } from "express";
 import getEnvProperty from "./utils/getEnvProperty";
-import orderRoutes from "./routes/orderRoutes";
 import { ENV, ROUTES } from "./constants";
 import userRoutes from "./routes/userRoutes";
 import adsRoutes from "./routes/adsRoutes";
