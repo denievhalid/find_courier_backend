@@ -10,7 +10,7 @@ export type Config = {
   action: ExpressAction;
 };
 
-export default function configureStore(config: Config[]) {
+export const configureRoutes = (config: Config[]) => {
   const router = Router();
 
   _.forEach(config, (item) => {
@@ -18,4 +18,4 @@ export default function configureStore(config: Config[]) {
   });
 
   return router;
-}
+};

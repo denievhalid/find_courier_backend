@@ -1,7 +1,7 @@
 import AdsController from "../controllers/AdsController";
-import configureStore from "../utils/configureRoutes";
+import { configureRoutes } from "../utils/configureRoutes";
 
-export default configureStore([
+export default configureRoutes([
   {
     path: "/",
     method: "get",
