@@ -7,7 +7,13 @@ class AdService<T> {
   }
 
   getList() {
-    return AdModel.find();
+    return AdModel.find()
+      .populate({
+        path: "from",
+      })
+      .populate({
+        path: "to",
+      });
   }
 }
 

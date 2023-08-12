@@ -6,12 +6,27 @@ import getEnvProperty from "./utils/getEnvProperty";
 import { ENV, ROUTES } from "./constants";
 import userRoutes from "./routes/userRoutes";
 import adsRoutes from "./routes/adsRoutes";
+import AdModel from "./models/AdModel";
+import Location from "./models/LocationModel";
 
 function createServer() {
   const server: Express = express();
 
   useMiddlewares(server);
   useRoutes(server);
+
+  Location.find().then((data) => {
+    const [f, s] = data.map((item) => item._id);
+
+    AdModel.create({
+      title: "Баночка с БАД",
+      date: "2023-11-11",
+      weight: "До 1 кг",
+      price: "500",
+      from: f,
+      to: s,
+    });
+  });
 
   server.listen(getEnvProperty(ENV.PORT));
 }

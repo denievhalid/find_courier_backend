@@ -15,7 +15,7 @@ const schema = new Schema<AdType>({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    //required: true,
   },
   price: {
     type: Number,
