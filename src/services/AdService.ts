@@ -6,8 +6,8 @@ class AdService<T> {
     return AdModel.create(payload);
   }
 
-  findOne(_id: string) {
-    return AdModel.findOne({ _id })
+  findOne(id: string) {
+    return AdModel.findById(id)
       .populate({
         path: "from",
       })
