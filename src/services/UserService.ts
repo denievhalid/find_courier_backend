@@ -1,18 +1,11 @@
 import { OrderType } from "../types";
-import OrderModel from "../models/OrderModel";
 
 class UserService {
-  static async getList() {
-    return OrderModel.find();
-  }
+  static async getList() {}
 
-  static async getOne() {
-    return OrderModel.findOne();
-  }
+  static async getOne() {}
 
-  static async create(order: OrderType) {
-    return OrderModel.create(order);
-  }
+  static async create(order: OrderType) {}
 }
 
 export default UserService;

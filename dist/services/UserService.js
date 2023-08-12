@@ -8,26 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const OrderModel_1 = __importDefault(require("../models/OrderModel"));
 class UserService {
     static getList() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return OrderModel_1.default.find();
-        });
+        return __awaiter(this, void 0, void 0, function* () { });
     }
     static getOne() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return OrderModel_1.default.findOne();
-        });
+        return __awaiter(this, void 0, void 0, function* () { });
     }
     static create(order) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return OrderModel_1.default.create(order);
-        });
+        return __awaiter(this, void 0, void 0, function* () { });
     }
 }
 exports.default = UserService;
