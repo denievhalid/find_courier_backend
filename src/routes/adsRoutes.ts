@@ -10,7 +10,7 @@ export default configureRoutes([
   {
     path: "/:id",
     method: "get",
-    action: AdsController.getOrder,
+    action: AdsController.getOne,
   },
   {
     path: "/",

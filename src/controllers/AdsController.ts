@@ -10,7 +10,12 @@ class AdsController {
       console.log(err);
     }
   }
-  getOrder() {}
+  async getOne(req: Request, res: Response) {
+    try {
+      const data = await AdService.findOne(req.params.id);
+      return res.status(200).json(data);
+    } catch (err) {}
+  }
 
   async getList(req: Request, res: Response) {
     try {

@@ -6,6 +6,16 @@ class AdService<T> {
     return AdModel.create(payload);
   }
 
+  findOne(_id: string) {
+    return AdModel.findOne({ _id })
+      .populate({
+        path: "from",
+      })
+      .populate({
+        path: "to",
+      });
+  }
+
   getList() {
     return AdModel.find()
       .populate({

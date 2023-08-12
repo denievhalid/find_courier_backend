@@ -19,15 +19,20 @@ function createServer() {
     useRoutes(server);
     LocationModel_1.default.find().then((data) => {
         const [f, s] = data.map((item) => item._id);
+        return;
         AdModel_1.default.create({
-            title: "Баночка с БАД",
+            title: "Спортивные часы Casio G-Shock",
             date: "2023-11-11",
             weight: "До 1 кг",
-            price: "500",
+            images: [
+                "https://cdn.sportmaster.ru/upload/resize_cache/iblock/5e6/83758520299.jpg",
+            ],
+            price: "2000",
             from: f,
             to: s,
         });
     });
+    console.log(1);
     server.listen((0, getEnvProperty_1.default)(constants_1.ENV.PORT));
 }
 exports.createServer = createServer;
