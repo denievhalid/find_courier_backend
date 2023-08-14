@@ -1,4 +1,5 @@
 export type LocationType = {
+  _id: string;
   city_name: string;
   city_kladr_id: number;
 };

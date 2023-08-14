@@ -5,11 +5,11 @@ export default configureRoutes([
   {
     path: "/",
     method: "post",
-    action: UserController.login,
+    actions: [UserController.login],
   },
   {
     path: "/:id",
     method: "post",
-    action: UserController.register,
+    actions: [UserController.register],
   },
 ]);

@@ -1,20 +1,22 @@
 import AdsController from "../controllers/AdsController";
 import { configureRoutes } from "../utils/configureRoutes";
+import LocationService from "../services/LocationService";
+import { getLocationByKladr } from "../middlewares/getLocationByKladr";
 
 export default configureRoutes([
   {
     path: "/",
     method: "get",
-    action: AdsController.getList,
+    actions: [getLocationByKladr, AdsController.getList],
   },
   {
     path: "/:id",
     method: "get",
-    action: AdsController.getOne,
+    actions: [AdsController.getOne],
   },
   {
     path: "/",
     method: "post",
-    action: AdsController.createOrder,
+    actions: [AdsController.createOrder],
   },
 ]);

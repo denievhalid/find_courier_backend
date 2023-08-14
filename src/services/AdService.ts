@@ -1,5 +1,6 @@
 import AdModel from "../models/AdModel";
 import { AdType } from "../types";
+import { FilterQuery, Types } from "mongoose";
 
 class AdService<T> {
   create(payload: T) {
@@ -16,14 +17,8 @@ class AdService<T> {
       });
   }
 
-  getList() {
-    return AdModel.find()
-      .populate({
-        path: "from",
-      })
-      .populate({
-        path: "to",
-      });
+  getList(filter: T) {
+    return AdModel.find({ from: filter.from, to: filter.to });
   }
 }
 

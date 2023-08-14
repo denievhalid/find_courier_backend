@@ -1,4 +1,5 @@
-import type { Request, Response } from "express";
+import _ from "lodash";
+import type { NextFunction, Request, Response } from "express";
 import AdService from "../services/AdService";
 
 class AdsController {
@@ -18,8 +19,10 @@ class AdsController {
   }
 
   async getList(req: Request, res: Response) {
+    const { from, to, date } = req.query;
+
     try {
-      const data = await AdService.getList();
+      const data = await AdService.getList({ from, to, date });
       return res.status(200).json(data);
     } catch (err) {
       console.log(err);
