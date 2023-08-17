@@ -32,7 +32,7 @@ class AdController {
   async delete(req: Request, res: Response) {
     try {
       const data = await AdService.delete(req.params.id);
-      return res.status(200).json(data);
+      return res.sendStatus(204);
     } catch (err) {}
   }
 }
