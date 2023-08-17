@@ -17,7 +17,7 @@ export default configureRoutes([
   {
     path: "/",
     method: "post",
-    actions: [AdsController.createOrder],
+    actions: [AdsController.create],
   },
   {
     path: "/:id",

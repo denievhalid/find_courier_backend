@@ -3,12 +3,12 @@ import type { NextFunction, Request, Response } from "express";
 import AdService from "../services/AdService";
 
 class AdController {
-  async createOrder(req: Request, res: Response) {
+  async create(req: Request, res: Response) {
     try {
       await AdService.create(req.body);
       return res.sendStatus(201);
     } catch (err) {
-      console.log(err);
+      return res.sendStatus(400);
     }
   }
   async getOne(req: Request, res: Response) {
