@@ -9,7 +9,7 @@ const schema = new Schema<AdType>({
   images: [
     {
       type: String,
-      required: true,
+      //required: true,
     },
   ],
   user: {
@@ -24,12 +24,12 @@ const schema = new Schema<AdType>({
   from: {
     type: Schema.Types.ObjectId,
     ref: "Location",
-    required: true,
+    //required: true,
   },
   to: {
     type: Schema.Types.ObjectId,
     ref: "Location",
-    required: true,
+    //required: true,
   },
 });
 
