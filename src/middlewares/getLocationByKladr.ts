@@ -7,6 +7,7 @@ export async function getLocationByKladr(
   res: Response,
   next: NextFunction
 ) {
+  return next();
   const { from, to } = req.query;
 
   try {

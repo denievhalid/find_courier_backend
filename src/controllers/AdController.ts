@@ -2,7 +2,7 @@ import _ from "lodash";
 import type { NextFunction, Request, Response } from "express";
 import AdService from "../services/AdService";
 
-class AdsController {
+class AdController {
   async createOrder(req: Request, res: Response) {
     try {
       await AdService.create(req.body);
@@ -22,7 +22,7 @@ class AdsController {
     const { from, to, date } = req.query;
 
     try {
-      const data = await AdService.getList({ from, to, date });
+      const data = await AdService.getList();
       return res.status(200).json(data);
     } catch (err) {
       console.log(err);
@@ -30,4 +30,4 @@ class AdsController {
   }
 }
 
-export default new AdsController();
+export default new AdController();

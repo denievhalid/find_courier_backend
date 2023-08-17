@@ -17,8 +17,8 @@ class AdService<T> {
       });
   }
 
-  getList(filter: T) {
-    return AdModel.find({ from: filter.from, to: filter.to });
+  getList(filter?: T) {
+    return AdModel.find();
   }
 }
 

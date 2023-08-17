@@ -7,12 +7,14 @@ exports.createServer = void 0;
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const i18n_1 = __importDefault(require("./i18n"));
 const getEnvProperty_1 = __importDefault(require("./utils/getEnvProperty"));
 const constants_1 = require("./constants");
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const adsRoutes_1 = __importDefault(require("./routes/adsRoutes"));
 const AdModel_1 = __importDefault(require("./models/AdModel"));
 const LocationModel_1 = __importDefault(require("./models/LocationModel"));
+const favoriteRoutes_1 = __importDefault(require("./routes/favoriteRoutes"));
 function createServer() {
     const server = (0, express_1.default)();
     useMiddlewares(server);
@@ -32,16 +34,17 @@ function createServer() {
             to: s,
         });
     });
-    console.log(1);
     server.listen((0, getEnvProperty_1.default)(constants_1.ENV.PORT));
 }
 exports.createServer = createServer;
 function useMiddlewares(server) {
     server.use((0, cors_1.default)());
+    server.use(i18n_1.default.init);
     server.use(body_parser_1.default.json());
     server.use(body_parser_1.default.urlencoded({ extended: true }));
 }
 function useRoutes(server) {
     server.use(constants_1.ROUTES.ADS, adsRoutes_1.default);
+    server.use(constants_1.ROUTES.FAVORITES, favoriteRoutes_1.default);
     server.use(constants_1.ROUTES.USERS, userRoutes_1.default);
 }

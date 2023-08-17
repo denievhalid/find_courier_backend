@@ -7,5 +7,6 @@ exports.ENV = {
 };
 exports.ROUTES = {
     ADS: "/ads",
+    FAVORITES: "/favorites",
     USERS: "/users",
 };

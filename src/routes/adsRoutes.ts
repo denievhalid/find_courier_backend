@@ -1,4 +1,4 @@
-import AdsController from "../controllers/AdsController";
+import AdsController from "../controllers/AdController";
 import { configureRoutes } from "../utils/configureRoutes";
 import LocationService from "../services/LocationService";
 import { getLocationByKladr } from "../middlewares/getLocationByKladr";
