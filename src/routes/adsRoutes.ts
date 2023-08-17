@@ -19,4 +19,9 @@ export default configureRoutes([
     method: "post",
     actions: [AdsController.createOrder],
   },
+  {
+    path: "/:id",
+    method: "delete",
+    actions: [AdsController.delete],
+  },
 ]);

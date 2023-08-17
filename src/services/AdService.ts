@@ -20,6 +20,10 @@ class AdService<T> {
   getList(filter?: T) {
     return AdModel.find();
   }
+
+  delete(id: string) {
+    return AdModel.findByIdAndDelete(id);
+  }
 }
 
 export default new AdService<AdType>();
