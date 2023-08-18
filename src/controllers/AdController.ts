@@ -7,7 +7,7 @@ class AdController {
   async create(req: Request, res: Response) {
     const {
       body: { title, price },
-      file: images,
+      files,
     } = req;
 
     try {
@@ -18,13 +18,13 @@ class AdController {
       }
 
       // @ts-ignore
-      const im = images?.map((image) => image.path);
+      const images = files?.map((file) => image.path);
 
       // @ts-ignore
       await AdService.create({
         title,
         price,
-        images: im,
+        images,
       });
       return res.sendStatus(201);
     } catch (err) {
