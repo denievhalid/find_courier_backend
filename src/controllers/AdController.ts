@@ -10,6 +10,8 @@ class AdController {
       file,
     } = req;
 
+    console.log(req.body);
+
     try {
       const errors = validationResult(req);
 
