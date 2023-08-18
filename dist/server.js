@@ -8,6 +8,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const i18n_1 = __importDefault(require("./i18n"));
+const path_1 = __importDefault(require("path"));
 const getEnvProperty_1 = __importDefault(require("./utils/getEnvProperty"));
 const constants_1 = require("./constants");
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
@@ -38,11 +39,11 @@ function createServer() {
 }
 exports.createServer = createServer;
 function useMiddlewares(server) {
+    server.use(express_1.default.static(path_1.default.join(__dirname, "uploads")));
     server.use((0, cors_1.default)());
     server.use(i18n_1.default.init);
     server.use(body_parser_1.default.json());
     server.use(body_parser_1.default.urlencoded({ extended: true }));
-    server.use("/uploads", express_1.default.static("uploads"));
 }
 function useRoutes(server) {
     server.use(constants_1.ROUTES.ADS, adsRoutes_1.default);

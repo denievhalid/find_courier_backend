@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import i18n from "./i18n";
+import path from "path";
 import type { Express } from "express";
 import getEnvProperty from "./utils/getEnvProperty";
 import { ENV, ROUTES } from "./constants";
@@ -37,11 +38,11 @@ function createServer() {
 }
 
 function useMiddlewares(server: Express) {
+  server.use(express.static(path.join(__dirname, "uploads")));
   server.use(cors());
   server.use(i18n.init);
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
-  server.use("/uploads", express.static("uploads"));
 }
 
 function useRoutes(server: Express) {
