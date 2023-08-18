@@ -42,8 +42,12 @@ function useMiddlewares(server) {
     server.use("/uploads", express_1.default.static(path_1.default.resolve(__dirname, "..", "uploads")));
     server.use((0, cors_1.default)());
     server.use(i18n_1.default.init);
-    server.use(body_parser_1.default.json({ limit: "10mb" }));
-    server.use(body_parser_1.default.urlencoded({ extended: true, limit: "10mb" }));
+    server.use(body_parser_1.default.json({ limit: "35mb" }));
+    server.use(body_parser_1.default.urlencoded({
+        extended: true,
+        limit: "35mb",
+        parameterLimit: 50000,
+    }));
 }
 function useRoutes(server) {
     server.use(constants_1.ROUTES.ADS, adsRoutes_1.default);
