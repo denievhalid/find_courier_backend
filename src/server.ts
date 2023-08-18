@@ -38,7 +38,10 @@ function createServer() {
 }
 
 function useMiddlewares(server: Express) {
-  server.use(express.static(path.join(__dirname, "uploads")));
+  server.use(
+    "/uploads",
+    express.static(path.resolve(__dirname, "..", "uploads"))
+  );
   server.use(cors());
   server.use(i18n.init);
   server.use(bodyParser.json());

@@ -39,7 +39,7 @@ function createServer() {
 }
 exports.createServer = createServer;
 function useMiddlewares(server) {
-    server.use(express_1.default.static(path_1.default.join(__dirname, "uploads")));
+    server.use("/uploads", express_1.default.static(path_1.default.resolve(__dirname, "..", "uploads")));
     server.use((0, cors_1.default)());
     server.use(i18n_1.default.init);
     server.use(body_parser_1.default.json());
