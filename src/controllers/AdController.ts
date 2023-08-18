@@ -7,10 +7,8 @@ class AdController {
   async create(req: Request, res: Response) {
     const {
       body: { title, price },
-      file,
+      file: images,
     } = req;
-
-    console.log(req.body);
 
     try {
       const errors = validationResult(req);
@@ -19,7 +17,11 @@ class AdController {
         return res.status(400).json({ errors: errors.array() });
       }
 
-      //await AdService.create({ title, price });
+      await AdService.create({
+        title,
+        price,
+        images: images.map((image) => image.path),
+      });
       return res.sendStatus(201);
     } catch (err) {
       console.log(err);
