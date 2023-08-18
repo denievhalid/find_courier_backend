@@ -18,10 +18,13 @@ class AdController {
       }
 
       // @ts-ignore
+      const im = images?.map((image) => image.path);
+
+      // @ts-ignore
       await AdService.create({
         title,
         price,
-        images: images?.map((image) => image.path),
+        images: im,
       });
       return res.sendStatus(201);
     } catch (err) {
