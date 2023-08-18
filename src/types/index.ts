@@ -8,7 +8,7 @@ export type AdType = {
   title: string;
   from: LocationType;
   to: LocationType;
-  images: string | [string];
+  images?: string | [string];
   price: number;
   user: UserType;
 };

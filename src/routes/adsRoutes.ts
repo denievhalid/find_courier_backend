@@ -1,8 +1,9 @@
 import AdsController from "../controllers/AdController";
 import { configureRoutes } from "../utils/configureRoutes";
-import LocationService from "../services/LocationService";
+import { body } from "express-validator";
 import { getLocationByKladr } from "../middlewares/getLocationByKladr";
 import multer from "../utils/multer";
+import i18n from "../i18n";
 
 export default configureRoutes([
   {
@@ -18,7 +19,11 @@ export default configureRoutes([
   {
     path: "/",
     method: "post",
-    actions: [multer.single("images"), AdsController.create],
+    actions: [
+      body("title").notEmpty().withMessage(i18n.__("required_field")),
+      body("price").notEmpty().withMessage(i18n.__("required_field")),
+      AdsController.create,
+    ],
   },
   {
     path: "/:id",

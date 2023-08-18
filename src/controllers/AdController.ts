@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { NextFunction, Request, Response } from "express";
 import AdService from "../services/AdService";
+import { validationResult } from "express-validator";
 
 class AdController {
   async create(req: Request, res: Response) {
@@ -10,8 +11,13 @@ class AdController {
     } = req;
 
     try {
-      // @ts-ignore
-      await AdService.create({ title, price, images: file?.originalname });
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
+      //await AdService.create({ title, price });
       return res.sendStatus(201);
     } catch (err) {
       console.log(err);
