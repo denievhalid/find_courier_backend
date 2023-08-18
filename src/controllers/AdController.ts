@@ -17,10 +17,11 @@ class AdController {
         return res.status(400).json({ errors: errors.array() });
       }
 
+      // @ts-ignore
       await AdService.create({
         title,
         price,
-        images: images.map((image) => image.path),
+        images: images?.map((image) => image.path),
       });
       return res.sendStatus(201);
     } catch (err) {
