@@ -4,10 +4,17 @@ import AdService from "../services/AdService";
 
 class AdController {
   async create(req: Request, res: Response) {
+    const {
+      body: { title, price },
+      file,
+    } = req;
+
     try {
-      await AdService.create(req.body);
+      // @ts-ignore
+      await AdService.create({ title, price, images: file.path });
       return res.sendStatus(201);
     } catch (err) {
+      console.log(err);
       return res.sendStatus(400);
     }
   }

@@ -2,6 +2,7 @@ import AdsController from "../controllers/AdController";
 import { configureRoutes } from "../utils/configureRoutes";
 import LocationService from "../services/LocationService";
 import { getLocationByKladr } from "../middlewares/getLocationByKladr";
+import multer from "../utils/multer";
 
 export default configureRoutes([
   {
@@ -17,7 +18,7 @@ export default configureRoutes([
   {
     path: "/",
     method: "post",
-    actions: [AdsController.create],
+    actions: [multer.single("images"), AdsController.create],
   },
   {
     path: "/:id",

@@ -42,6 +42,7 @@ function useMiddlewares(server) {
     server.use(i18n_1.default.init);
     server.use(body_parser_1.default.json());
     server.use(body_parser_1.default.urlencoded({ extended: true }));
+    server.use("/uploads", express_1.default.static("uploads"));
 }
 function useRoutes(server) {
     server.use(constants_1.ROUTES.ADS, adsRoutes_1.default);
