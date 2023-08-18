@@ -43,7 +43,7 @@ function useMiddlewares(server) {
     server.use((0, cors_1.default)());
     server.use(i18n_1.default.init);
     server.use(body_parser_1.default.json({ limit: "10mb" }));
-    server.use(body_parser_1.default.urlencoded({ extended: true }));
+    server.use(body_parser_1.default.urlencoded({ extended: true, limit: "10mb" }));
 }
 function useRoutes(server) {
     server.use(constants_1.ROUTES.ADS, adsRoutes_1.default);
