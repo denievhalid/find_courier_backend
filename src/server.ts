@@ -47,7 +47,6 @@ function useMiddlewares(server: Express) {
   server.use(bodyParser.json({ limit: "35mb" }));
   server.use(
     bodyParser.urlencoded({
-      extended: true,
       limit: "35mb",
       parameterLimit: 50000,
     })

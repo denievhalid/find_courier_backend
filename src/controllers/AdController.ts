@@ -8,10 +8,10 @@ class AdController {
       body: { title, price },
       file,
     } = req;
-    console.log(file, "file");
+
     try {
       // @ts-ignore
-      await AdService.create({ title, price, images: file.path });
+      await AdService.create({ title, price, images: file?.originalname });
       return res.sendStatus(201);
     } catch (err) {
       console.log(err);

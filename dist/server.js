@@ -44,7 +44,6 @@ function useMiddlewares(server) {
     server.use(i18n_1.default.init);
     server.use(body_parser_1.default.json({ limit: "35mb" }));
     server.use(body_parser_1.default.urlencoded({
-        extended: true,
         limit: "35mb",
         parameterLimit: 50000,
     }));

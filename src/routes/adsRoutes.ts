@@ -18,7 +18,7 @@ export default configureRoutes([
   {
     path: "/",
     method: "post",
-    actions: [AdsController.create],
+    actions: [multer.single("images"), AdsController.create],
   },
   {
     path: "/:id",
