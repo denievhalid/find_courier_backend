@@ -44,7 +44,7 @@ function useMiddlewares(server: Express) {
   );
   server.use(cors());
   server.use(i18n.init);
-  server.use(bodyParser.json());
+  server.use(bodyParser.json({ limit: "10mb" }));
   server.use(bodyParser.urlencoded({ extended: true }));
 }
 
