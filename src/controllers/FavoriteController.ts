@@ -4,10 +4,16 @@ import FavoriteService from "../services/FavoriteService";
 class FavoriteController {
   add() {}
 
-  get() {}
+  async get(req: Request, res: Response) {
+    return res.sendStatus(200);
+  }
 
   async toggle(req: Request, res: Response) {
     const { id } = req.params;
+
+    console.log(111);
+
+    console.log(id);
 
     try {
       const result = await FavoriteService.toggle(id);

@@ -3,18 +3,13 @@ import FavoriteController from "../controllers/FavoriteController";
 
 export default configureRoutes([
   {
-    path: "/:ad",
+    path: "/",
     method: "get",
     actions: [FavoriteController.get],
   },
   {
-    path: "/:ad",
+    path: "/:id",
     method: "post",
-    actions: [FavoriteController.add],
-  },
-  {
-    path: "/:ad",
-    method: "patch",
     actions: [FavoriteController.toggle],
   },
   {
