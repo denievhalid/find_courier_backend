@@ -1,7 +1,29 @@
+import FavoriteModel from "../models/FavoriteModel";
+
 class FavoriteService<T> {
   create() {}
 
   get() {}
+
+  async toggle(id: string) {
+    try {
+      const item = await FavoriteModel.findOne({ ad: id });
+
+      if (item) {
+        await FavoriteModel.findOneAndRemove({ ad: id });
+
+        return {
+          isFavorite: false,
+        };
+      }
+
+      await FavoriteModel.create({ ad: id });
+
+      return {
+        isFavorite: true,
+      };
+    } catch (err) {}
+  }
 
   delete() {}
 }

@@ -20,6 +20,8 @@ class AdController {
       // @ts-ignore
       const images = files?.map((file) => file.path);
 
+      console.log(images);
+
       // @ts-ignore
       await AdService.create({
         title,

@@ -22,7 +22,8 @@ class AdService<T> {
   }
 
   delete(id: string) {
-    return AdModel.findByIdAndDelete(id);
+    //return AdModel.findByIdAndDelete(id);
+    return AdModel.deleteMany();
   }
 }
 

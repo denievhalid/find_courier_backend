@@ -13,6 +13,11 @@ export default configureRoutes([
     actions: [FavoriteController.add],
   },
   {
+    path: "/:ad",
+    method: "patch",
+    actions: [FavoriteController.toggle],
+  },
+  {
     path: "/:id",
     method: "delete",
     actions: [FavoriteController.remove],
