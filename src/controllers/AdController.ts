@@ -6,7 +6,7 @@ import { validationResult } from "express-validator";
 class AdController {
   async create(req: Request, res: Response) {
     const {
-      body: { title, price },
+      body: { title, price, weight },
       files,
     } = req;
 
@@ -20,12 +20,11 @@ class AdController {
       // @ts-ignore
       const images = files?.map((file) => file.path);
 
-      console.log(images);
-
       // @ts-ignore
       await AdService.create({
         title,
         price,
+        weight,
         images,
       });
       return res.sendStatus(201);

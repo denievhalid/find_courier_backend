@@ -17,6 +17,10 @@ const schema = new Schema<AdType>({
     ref: "User",
     //required: true,
   },
+  weight: {
+    type: Number,
+    required: true,
+  },
   price: {
     type: Number,
     required: true,
