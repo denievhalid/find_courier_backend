@@ -18,6 +18,7 @@ class FavoriteService<T> {
         $addFields: {
           ad: {
             favoriteId: "$_id",
+            isFavorite: true,
           },
         },
       },
