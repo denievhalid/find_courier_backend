@@ -29,10 +29,10 @@ class AdController {
       });
       return res.sendStatus(201);
     } catch (err) {
-      console.log(err);
-      return res.sendStatus(400);
+      return res.status(400).json(err);
     }
   }
+
   async getOne(req: Request, res: Response) {
     try {
       const data = await AdService.findOne(req.params.id);
