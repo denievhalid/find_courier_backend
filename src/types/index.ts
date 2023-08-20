@@ -11,7 +11,7 @@ export type AdType = {
   images?: string | [string];
   price: number;
   user: UserType;
-  weight: number;
+  weight: string;
 };
 
 export type UserType = {

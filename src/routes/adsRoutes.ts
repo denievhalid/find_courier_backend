@@ -23,6 +23,7 @@ export default configureRoutes([
       multer.array("images", 5),
       body("title").notEmpty().withMessage(i18n.__("required_field")),
       body("price").notEmpty().withMessage(i18n.__("required_field")),
+      body("weight").notEmpty().withMessage(i18n.__("required_field")),
       AdsController.create,
     ],
   },

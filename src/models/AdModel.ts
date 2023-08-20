@@ -18,7 +18,7 @@ const schema = new Schema<AdType>({
     //required: true,
   },
   weight: {
-    type: Number,
+    type: String,
     required: true,
   },
   price: {
