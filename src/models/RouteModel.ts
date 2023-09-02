@@ -1,16 +1,16 @@
 import { Schema, model } from "mongoose";
-import type { LocationType } from "../types";
+import type { RouteType } from "../types";
 
-const schema = new Schema<LocationType>({
+const schema = new Schema<RouteType>({
   city_name: {
     type: String,
     required: true,
   },
-  city_kladr_id: {
+  city_kladr: {
     type: Number,
     required: true,
     unique: true,
   },
 });
 
-export default model<LocationType>("Location", schema);
+export default model<RouteType>("Route", schema);

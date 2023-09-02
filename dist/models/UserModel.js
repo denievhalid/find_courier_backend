@@ -3,12 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const schema = new mongoose_1.Schema({
     login: {
-        type: String,
+        type: Number,
         unique: true,
-        required: true,
-    },
-    password: {
-        type: String,
         required: true,
     },
 });

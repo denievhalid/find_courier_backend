@@ -5,16 +5,14 @@ import UserService from "../services/UserService";
 
 export default configureRoutes([
   {
-    path: "/",
+    path: "/login",
     method: "post",
-    actions: [
-      body("login").custom((login, { req }) => {
-        return UserService.getByLogin(login).then((user) => {
-          if (user) return Promise.reject("Login already exists");
-        });
-      }),
-      UserController.login,
-    ],
+    actions: [UserController.login],
+  },
+  {
+    path: "/verify",
+    method: "post",
+    actions: [UserController.verify],
   },
   {
     path: "/:id",

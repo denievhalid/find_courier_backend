@@ -3,12 +3,8 @@ import type { UserType } from "../types";
 
 const schema = new Schema<UserType>({
   login: {
-    type: String,
+    type: Number,
     unique: true,
-    required: true,
-  },
-  password: {
-    type: String,
     required: true,
   },
 });

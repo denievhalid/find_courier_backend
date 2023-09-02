@@ -9,6 +9,7 @@ class UserService {
     getByLogin(login) {
         return UserModel_1.default.findOne({ login });
     }
+    sendCode(login) { }
     create(payload) {
         return UserModel_1.default.create(payload);
     }

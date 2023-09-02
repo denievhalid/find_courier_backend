@@ -8,8 +8,6 @@ import getEnvProperty from "./utils/getEnvProperty";
 import { ENV, ROUTES } from "./constants";
 import userRoutes from "./routes/userRoutes";
 import adsRoutes from "./routes/adsRoutes";
-import AdModel from "./models/AdModel";
-import Location from "./models/LocationModel";
 import favoriteRoutes from "./routes/favoriteRoutes";
 
 function createServer() {
@@ -17,22 +15,6 @@ function createServer() {
 
   useMiddlewares(server);
   useRoutes(server);
-
-  Location.find().then((data) => {
-    const [f, s] = data.map((item) => item._id);
-    return;
-    AdModel.create({
-      title: "Спортивные часы Casio G-Shock",
-      date: "2023-11-11",
-      weight: "До 1 кг",
-      images: [
-        "https://cdn.sportmaster.ru/upload/resize_cache/iblock/5e6/83758520299.jpg",
-      ],
-      price: "2000",
-      from: f,
-      to: s,
-    });
-  });
 
   server.listen(getEnvProperty(ENV.PORT));
 }

@@ -1,13 +1,17 @@
-export type LocationType = {
+import type { Base32SecretKey } from "@otplib/core/authenticator";
+
+export type RouteType = {
   _id: string;
   city_name: string;
-  city_kladr_id: number;
+  city_kladr: number;
 };
 
 export type AdType = {
   title: string;
-  from: LocationType;
-  to: LocationType;
+  route: {
+    from: RouteType;
+    to: RouteType;
+  };
   images?: string | [string];
   price: number;
   user: UserType;
@@ -15,10 +19,17 @@ export type AdType = {
 };
 
 export type UserType = {
-  login: string;
-  password: string;
+  login: number;
 };
 
 export type FavoriteType = {
   ad: AdType;
+};
+
+export type VerifyType = {
+  _id: string;
+  deadline: string;
+  secret: Base32SecretKey;
+  token: string;
+  user: UserType;
 };

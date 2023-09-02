@@ -15,7 +15,18 @@ const schema = new Schema<AdType>({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    //required: true,
+  },
+  route: {
+    from: {
+      type: Schema.Types.ObjectId,
+      ref: "Route",
+      //required: true,
+    },
+    to: {
+      type: Schema.Types.ObjectId,
+      ref: "Route",
+      //required: true,
+    },
   },
   weight: {
     type: String,
@@ -24,16 +35,6 @@ const schema = new Schema<AdType>({
   price: {
     type: Number,
     required: true,
-  },
-  from: {
-    type: Schema.Types.ObjectId,
-    ref: "Location",
-    //required: true,
-  },
-  to: {
-    type: Schema.Types.ObjectId,
-    ref: "Location",
-    //required: true,
   },
 });
 

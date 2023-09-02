@@ -8,6 +8,8 @@ class UserService<T> {
     return UserModel.findOne({ login });
   }
 
+  sendCode(login: string) {}
+
   create(payload: T) {
     return UserModel.create(payload);
   }
