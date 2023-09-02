@@ -27,7 +27,7 @@ export type FavoriteType = {
 };
 
 export type VerifyType = {
-  _id: string;
+  _id?: string;
   deadline: string;
   secret: Base32SecretKey;
   token: string;
