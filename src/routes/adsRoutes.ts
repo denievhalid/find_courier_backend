@@ -1,7 +1,7 @@
 import AdsController from "../controllers/AdController";
 import { configureRoutes } from "../utils/configureRoutes";
 import { body } from "express-validator";
-import { getLocationByKladr } from "../middlewares/getLocationByKladr";
+//import { getLocationByKladr } from "../middlewares/getLocationByKladr";
 import multer from "../utils/multer";
 import i18n from "../i18n";
 
@@ -9,7 +9,7 @@ export default configureRoutes([
   {
     path: "/",
     method: "get",
-    actions: [getLocationByKladr, AdsController.getList],
+    actions: [AdsController.getList],
   },
   {
     path: "/:id",
