@@ -52,6 +52,7 @@ class UserController {
     } = req;
 
     try {
+      // @ts-ignore
       const record = await VerifyService.getOne({
         _id: verifyId,
         secret,

@@ -1,9 +1,9 @@
 import { LocationType } from "../types";
-import LocationModel from "../models/LocationModel";
+//import LocationModel from "../models/LocationModel";
 
 class LocationService<T> {
   getByKladr(city_kladr_id: number) {
-    return LocationModel.findOne({ city_kladr_id });
+    //return LocationModel.findOne({ city_kladr_id });
   }
 }
 
