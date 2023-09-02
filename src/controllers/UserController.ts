@@ -24,7 +24,12 @@ class UserController {
 
       const { secret, token } = VerifyService.generate();
 
-      const { _id } = await VerifyService.create({ secret, token, user });
+      const { _id } = await VerifyService.create({
+        deadline: "123",
+        secret,
+        token,
+        user,
+      });
 
       await SmsService.send(login, token);
 
