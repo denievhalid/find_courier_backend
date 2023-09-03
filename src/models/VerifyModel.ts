@@ -3,11 +3,7 @@ import type { AdType, VerifyType } from "../types";
 
 const schema = new Schema<VerifyType>({
   deadline: {
-    type: String,
-    required: true,
-  },
-  token: {
-    type: String,
+    type: Date,
     required: true,
   },
   secret: {
@@ -19,5 +15,9 @@ const schema = new Schema<VerifyType>({
     ref: "User",
   },
 });
+
+schema.statics.getPublicFields = () => {
+  console.log(111);
+};
 
 export default model<VerifyType>("Verify", schema);

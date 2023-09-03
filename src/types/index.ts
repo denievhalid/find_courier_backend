@@ -28,8 +28,7 @@ export type FavoriteType = {
 
 export type VerifyType = {
   _id?: string;
-  deadline: string;
+  deadline: Date;
   secret: Base32SecretKey;
-  token: string;
   user: UserType;
 };

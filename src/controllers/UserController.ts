@@ -6,7 +6,7 @@ import VerifyService from "../services/VerifyService";
 class UserController {
   async login(req: Request, res: Response) {
     const {
-      body: { verifyId, login },
+      body: { login },
     } = req;
 
     try {
@@ -16,26 +16,32 @@ class UserController {
         user = await UserService.create({ login });
       }
 
-      const verify = await VerifyService.getById(verifyId);
+      const verify = await VerifyService.getOne({
+        user,
+        deadline: {
+          $gt: new Date(),
+        },
+      });
 
       if (verify) {
-        VerifyService.verify({ secret: verify.secret, token: verify.token });
+        return res.status(200).json({
+          deadline: verify.deadline,
+          secret: verify.secret,
+        });
       }
+
+      const deadline = new Date();
+      deadline.setSeconds(deadline.getSeconds() + 60);
 
       const { secret, token } = VerifyService.generate();
 
-      const { _id } = await VerifyService.create({
-        deadline: "123",
-        secret,
-        token,
-        user,
-      });
+      //await SmsService.send(login, token);
 
-      await SmsService.send(login, token);
+      await VerifyService.create({ deadline, secret, user });
 
       return res.status(200).json({
-        _id,
-        code: token,
+        deadline,
+        secret,
       });
     } catch (err) {
       console.log(err);

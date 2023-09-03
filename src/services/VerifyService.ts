@@ -1,13 +1,14 @@
 import { authenticator } from "otplib";
 import type { VerifyType } from "../types";
 import VerifyModel from "../models/VerifyModel";
+import { FilterQuery } from "mongoose";
 
-class VerifyService {
-  create({ deadline, secret, token, user }: VerifyType) {
-    return VerifyModel.create({ deadline, secret, token, user });
+class VerifyService<T> {
+  create(payload: VerifyType) {
+    return VerifyModel.create(payload);
   }
 
-  getOne(filter: VerifyType) {
+  getOne(filter: FilterQuery<T>) {
     return VerifyModel.findOne(filter);
   }
 
@@ -15,7 +16,7 @@ class VerifyService {
     return VerifyModel.findById(id);
   }
 
-  generate(): Omit<VerifyType, "deadline" | "user"> {
+  generate(): { secret: string; token: string } {
     authenticator.options = {};
     const secret = authenticator.generateSecret();
     const token = authenticator.generate(secret);
@@ -26,9 +27,9 @@ class VerifyService {
     };
   }
 
-  verify({ secret, token }: Omit<VerifyType, "deadline" | "user">) {
+  verify({ secret, token }: { secret: string; token: string }) {
     return authenticator.verify({ secret, token });
   }
 }
 
-export default new VerifyService();
+export default new VerifyService<VerifyType>();
