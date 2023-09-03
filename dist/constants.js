@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ROUTES = exports.ENV = void 0;
 exports.ENV = {
+    JWT_SECRET: "jwt_secret",
     PORT: "port",
     MONGOOSE_URI: "mongoose_uri",
     SMS_API_URL: "sms_api_url",

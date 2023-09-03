@@ -1,4 +1,5 @@
 export const ENV = {
+  JWT_SECRET: "jwt_secret",
   PORT: "port",
   MONGOOSE_URI: "mongoose_uri",
   SMS_API_URL: "sms_api_url",

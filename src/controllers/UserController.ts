@@ -1,8 +1,10 @@
 import type { Request, Response } from "express";
 import UserService from "../services/UserService";
-import SmsService from "../services/SmsService";
+import jwt from "jsonwebtoken";
 import VerifyService from "../services/VerifyService";
 import i18n from "../i18n";
+import getEnvProperty from "../utils/getEnvProperty";
+import { ENV } from "../constants";
 
 class UserController {
   async login(req: Request, res: Response) {
@@ -82,7 +84,9 @@ class UserController {
         return res.status(422).json({ message: i18n.__("invalid_code") });
       }
 
-      return res.status(200).json({ status: "ok" });
+      const token = jwt.sign({ a: 1 }, getEnvProperty(ENV.JWT_SECRET));
+
+      return res.status(200).json({ token: "ok" });
     } catch (err) {}
   }
 

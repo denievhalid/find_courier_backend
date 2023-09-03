@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 function getEnvProperty(key) {
-    return process.env[key.toUpperCase()] || null;
+    return process.env[key.toUpperCase()] || "";
 }
 exports.default = getEnvProperty;
