@@ -7,6 +7,11 @@ const schema = new Schema<UserType>({
     unique: true,
     required: true,
   },
+  isNew: {
+    type: Boolean,
+    required: true,
+    default: true,
+  },
 });
 
 export default model<UserType>("User", schema);

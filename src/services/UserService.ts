@@ -1,5 +1,6 @@
 import UserModel from "../models/UserModel";
 import { UserType } from "../types";
+import { FilterQuery } from "mongoose";
 
 class UserService<T> {
   get() {}
@@ -10,7 +11,7 @@ class UserService<T> {
 
   sendCode(login: string) {}
 
-  create(payload: T) {
+  create(payload: FilterQuery<T>) {
     return UserModel.create(payload);
   }
 

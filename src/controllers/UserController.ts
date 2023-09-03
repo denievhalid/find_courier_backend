@@ -36,13 +36,14 @@ class UserController {
 
       const { secret, token } = VerifyService.generate();
 
-      await SmsService.send(login, token);
+      //await SmsService.send(login, token);
 
       await VerifyService.create({ deadline, secret, user });
 
       return res.status(200).json({
         deadline,
         secret,
+        user,
       });
     } catch (err) {
       console.log(err);
@@ -82,6 +83,14 @@ class UserController {
       }
 
       return res.status(200).json({ status: "ok" });
+    } catch (err) {}
+  }
+
+  async update(req: Request, res: Response) {
+    const {
+      body: { login, name, city },
+    } = req;
+    try {
     } catch (err) {}
   }
 }

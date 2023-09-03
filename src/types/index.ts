@@ -19,7 +19,11 @@ export type AdType = {
 };
 
 export type UserType = {
+  isNew: boolean;
   login: number;
+  name?: string;
+  gender?: string;
+  city?: string;
 };
 
 export type FavoriteType = {
