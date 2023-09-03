@@ -79,10 +79,10 @@ class UserController {
       const verify = VerifyService.verify({ secret, token });
 
       if (!verify) {
-        return res.sendStatus(422);
+        return res.status(422).json({ status: "error" });
       }
 
-      return res.sendStatus(200);
+      return res.status(200).json({ status: "ok" });
     } catch (err) {}
   }
 }
