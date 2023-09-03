@@ -9,11 +9,16 @@ class UserService {
     getByLogin(login) {
         return UserModel_1.default.findOne({ login });
     }
+    getByPhoneNumber(phoneNumber) {
+        return UserModel_1.default.findOne({ phoneNumber });
+    }
     sendCode(login) { }
     create(payload) {
         return UserModel_1.default.create(payload);
     }
-    update() { }
+    update(payload, update) {
+        return UserModel_1.default.findOneAndUpdate(payload, update);
+    }
     delete() { }
 }
 exports.default = new UserService();

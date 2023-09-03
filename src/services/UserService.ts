@@ -1,6 +1,6 @@
 import UserModel from "../models/UserModel";
 import { UserType } from "../types";
-import { FilterQuery } from "mongoose";
+import { FilterQuery, UpdateQuery } from "mongoose";
 
 class UserService<T> {
   get() {}
@@ -9,13 +9,19 @@ class UserService<T> {
     return UserModel.findOne({ login });
   }
 
+  getByPhoneNumber(phoneNumber: number) {
+    return UserModel.findOne({ phoneNumber });
+  }
+
   sendCode(login: string) {}
 
   create(payload: FilterQuery<T>) {
     return UserModel.create(payload);
   }
 
-  update() {}
+  update(payload: FilterQuery<T>, update: UpdateQuery<T>) {
+    return UserModel.findOneAndUpdate(payload, update);
+  }
 
   delete() {}
 }

@@ -1,4 +1,5 @@
 import type { Base32SecretKey } from "@otplib/core/authenticator";
+import type { Request } from "express";
 
 export type RouteType = {
   _id: string;
@@ -20,7 +21,7 @@ export type AdType = {
 
 export type UserType = {
   isNew: boolean;
-  login: number;
+  phoneNumber: number;
   name?: string;
   gender?: string;
   city?: string;
@@ -30,9 +31,19 @@ export type FavoriteType = {
   ad: AdType;
 };
 
+export type PinCodeType = {
+  deadline: Date;
+  secret: Base32SecretKey;
+  phoneNumber: number;
+};
+
 export type VerifyType = {
   _id?: string;
   deadline: Date;
   secret: Base32SecretKey;
   user: UserType;
 };
+
+export type RequestWithUserType = {
+  user: string;
+} & Request;

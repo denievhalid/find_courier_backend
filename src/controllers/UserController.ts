@@ -5,6 +5,7 @@ import VerifyService from "../services/VerifyService";
 import i18n from "../i18n";
 import getEnvProperty from "../utils/getEnvProperty";
 import { ENV } from "../constants";
+import type { RequestWithUserType } from "../types";
 
 class UserController {
   async login(req: Request, res: Response) {
@@ -77,7 +78,6 @@ class UserController {
       // if (!record) {
       //   return res.sendStatus(404);
       // }
-
       const verify = VerifyService.verify({ secret, token });
 
       if (!verify) {
@@ -86,16 +86,20 @@ class UserController {
 
       const token = jwt.sign({ a: 1 }, getEnvProperty(ENV.JWT_SECRET));
 
-      return res.status(200).json({ token: "ok" });
+      return res.status(200).json({ token });
     } catch (err) {}
   }
 
   async update(req: Request, res: Response) {
     const {
-      body: { login, name, city },
+      body: { name, city },
     } = req;
     try {
-    } catch (err) {}
+      //await UserService.update({ _id: req.user }, { name, city });
+      return res.status(200).json({ success: true });
+    } catch (error) {
+      return res.status(500).json({ success: false, error });
+    }
   }
 }
 

@@ -1,7 +1,6 @@
-import { body } from "express-validator";
 import UserController from "../controllers/UserController";
 import { configureRoutes } from "../utils/configureRoutes";
-import UserService from "../services/UserService";
+import checkAuth from "../middlewares/checkAuth";
 
 export default configureRoutes([
   {
@@ -18,5 +17,10 @@ export default configureRoutes([
     path: "/:id",
     method: "post",
     actions: [UserController.register],
+  },
+  {
+    path: "/",
+    method: "patch",
+    actions: [checkAuth, UserController.update],
   },
 ]);
