@@ -17,7 +17,9 @@ class VerifyService<T> {
   }
 
   generate(): { secret: string; token: string } {
-    authenticator.options = {};
+    authenticator.options = {
+      step: 60,
+    };
     const secret = authenticator.generateSecret();
     const token = authenticator.generate(secret);
 

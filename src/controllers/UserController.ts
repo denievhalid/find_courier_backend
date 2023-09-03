@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import UserService from "../services/UserService";
 import SmsService from "../services/SmsService";
 import VerifyService from "../services/VerifyService";
+import dayjs from "dayjs";
 
 class UserController {
   async login(req: Request, res: Response) {
@@ -35,7 +36,7 @@ class UserController {
 
       const { secret, token } = VerifyService.generate();
 
-      //await SmsService.send(login, token);
+      await SmsService.send(login, token);
 
       await VerifyService.create({ deadline, secret, user });
 
@@ -61,23 +62,24 @@ class UserController {
     const {
       body: { verifyId, secret, token },
     } = req;
+    console.log(secret, token);
 
     try {
       // @ts-ignore
-      const record = await VerifyService.getOne({
-        _id: verifyId,
-        secret,
-        token,
-      });
-
-      if (!record) {
-        return res.sendStatus(404);
-      }
+      // const record = await VerifyService.getOne({
+      //   _id: verifyId,
+      //   secret,
+      //   token,
+      // });
+      //
+      // if (!record) {
+      //   return res.sendStatus(404);
+      // }
 
       const verify = VerifyService.verify({ secret, token });
 
       if (!verify) {
-        return res.sendStatus(404);
+        return res.sendStatus(422);
       }
 
       return res.sendStatus(200);
