@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import UserService from "../services/UserService";
 import jwt from "jsonwebtoken";
-import VerifyService from "../services/VerifyService";
 import i18n from "../i18n";
 import getEnvProperty from "../utils/getEnvProperty";
 import { ENV } from "../constants";
@@ -37,15 +36,15 @@ class UserController {
       const deadline = new Date();
       deadline.setSeconds(deadline.getSeconds() + 60);
 
-      const { secret, token } = VerifyService.generate();
+      //const { secret, token } = VerifyService.generate();
 
       //await SmsService.send(login, token);
 
-      await VerifyService.create({ deadline, secret, user });
+      //await VerifyService.create({ deadline, secret, user });
 
       return res.status(200).json({
         deadline,
-        secret,
+        //secret,
         user,
       });
     } catch (err) {
@@ -78,7 +77,7 @@ class UserController {
       // if (!record) {
       //   return res.sendStatus(404);
       // }
-      const verify = VerifyService.verify({ secret, token });
+      //const verify = VerifyService.verify({ secret, token });
 
       if (!verify) {
         return res.status(422).json({ message: i18n.__("invalid_code") });

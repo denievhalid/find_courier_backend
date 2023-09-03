@@ -8,13 +8,8 @@ export default configureRoutes([
     actions: [AuthController.sentPinCode],
   },
   {
-    path: "/singIn",
+    path: "/signIn",
     method: "post",
-    actions: [AuthController.singIn],
-  },
-  {
-    path: "/signUp",
-    method: "post",
-    actions: [AuthController.signUp],
+    actions: [AuthController.signIn],
   },
 ]);

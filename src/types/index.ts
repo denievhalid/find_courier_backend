@@ -37,13 +37,6 @@ export type PinCodeType = {
   phoneNumber: number;
 };
 
-export type VerifyType = {
-  _id?: string;
-  deadline: Date;
-  secret: Base32SecretKey;
-  user: UserType;
-};
-
 export type RequestWithUserType = {
   user: string;
 } & Request;

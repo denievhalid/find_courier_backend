@@ -1,6 +1,10 @@
 import type { Request, Response } from "express";
 import PinCodeService from "../services/PinCodeService";
-import SmsService from "../services/SmsService";
+import i18n from "../i18n";
+import jwt from "jsonwebtoken";
+import { ENV, PIN_CODE } from "../constants";
+import UserService from "../services/UserService";
+import getEnvProperty from "../utils/getEnvProperty";
 
 class AuthController {
   async sentPinCode(req: Request, res: Response) {
@@ -20,29 +24,75 @@ class AuthController {
 
       if (!doc) {
         deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds() + 60);
+        deadline.setSeconds(deadline.getSeconds() + PIN_CODE.DEADLINE);
 
         const { pinCode, secret } = PinCodeService.generate();
-
-        await SmsService.send(phoneNumber, pinCode);
+        console.log(pinCode);
+        //await SmsService.send(phoneNumber, pinCode);
 
         doc = await PinCodeService.create({
           deadline,
           phoneNumber,
           secret,
         });
+
+        console.log(doc);
       }
 
       return res.status(200).json({
         deadline: doc.deadline,
         secret: doc.secret,
       });
-    } catch (error) {}
+    } catch (error) {
+      return res.status(500).json(error);
+    }
   }
 
-  async singIn(req: Request, res: Response) {}
+  async signIn(req: Request, res: Response) {
+    const {
+      body: { pinCode, secret },
+    } = req;
 
-  async signUp(req: Request, res: Response) {}
+    let token;
+
+    try {
+      const doc = await PinCodeService.getOne({
+        secret,
+        deadline: {
+          $gt: new Date(),
+        },
+      });
+
+      if (!doc) {
+        return res.status(400).json({
+          message: i18n.__("invalid_code"),
+        });
+      }
+
+      const verify = PinCodeService.verify({ pinCode, secret });
+
+      if (!verify) {
+        return res.status(400).json({
+          message: i18n.__("invalid_code"),
+        });
+      }
+
+      await PinCodeService.removeById(doc._id);
+
+      const user = await UserService.getByPhoneNumber(doc.phoneNumber);
+
+      if (user) {
+        token = jwt.sign(
+          { _id: user._id, phoneNumber: user.phoneNumber },
+          getEnvProperty(ENV.JWT_SECRET)
+        );
+      }
+
+      return res.status(200).json({ token, userExist: Boolean(user) });
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  }
 }
 
 export default new AuthController();

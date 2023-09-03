@@ -14,3 +14,8 @@ export const ROUTES = {
   FAVORITES: "/favorites",
   USERS: "/users",
 };
+
+export const PIN_CODE = {
+  DIGITS: 4,
+  DEADLINE: 60,
+};
