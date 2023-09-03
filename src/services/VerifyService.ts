@@ -18,7 +18,7 @@ class VerifyService<T> {
 
   generate(): { secret: string; token: string } {
     authenticator.options = {
-      step: 60,
+      epoch: 60,
     };
     const secret = authenticator.generateSecret();
     const token = authenticator.generate(secret);
@@ -29,7 +29,7 @@ class VerifyService<T> {
     };
   }
 
-  verify({ secret, token }: { secret: string; token: string }) {
+  verify({ secret, token }: { secret: string; token: string }): boolean {
     return authenticator.verify({ secret, token });
   }
 }
