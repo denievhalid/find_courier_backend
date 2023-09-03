@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import UserService from "../services/UserService";
 import SmsService from "../services/SmsService";
 import VerifyService from "../services/VerifyService";
-import dayjs from "dayjs";
+import i18n from "../i18n";
 
 class UserController {
   async login(req: Request, res: Response) {
@@ -62,7 +62,6 @@ class UserController {
     const {
       body: { verifyId, secret, token },
     } = req;
-    console.log(secret, token);
 
     try {
       // @ts-ignore
@@ -79,7 +78,7 @@ class UserController {
       const verify = VerifyService.verify({ secret, token });
 
       if (!verify) {
-        return res.status(422).json({ status: "error" });
+        return res.status(422).json({ message: i18n.__("invalid_code") });
       }
 
       return res.status(200).json({ status: "ok" });
