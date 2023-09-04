@@ -36,8 +36,6 @@ class AuthController {
           phoneNumber,
           secret,
         });
-
-        console.log(doc);
       }
 
       return res.status(200).json({
