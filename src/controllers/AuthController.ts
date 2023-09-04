@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { ENV, PIN_CODE } from "../constants";
 import UserService from "../services/UserService";
 import getEnvProperty from "../utils/getEnvProperty";
+import SmsService from "../services/SmsService";
 
 class AuthController {
   async sentPinCode(req: Request, res: Response) {
@@ -27,8 +28,8 @@ class AuthController {
         deadline.setSeconds(deadline.getSeconds() + PIN_CODE.DEADLINE);
 
         const { pinCode, secret } = PinCodeService.generate();
-        console.log(pinCode);
-        //await SmsService.send(phoneNumber, pinCode);
+
+        await SmsService.send(phoneNumber, pinCode);
 
         doc = await PinCodeService.create({
           deadline,
