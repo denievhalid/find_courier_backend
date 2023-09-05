@@ -14,7 +14,7 @@ const schema = new Schema<UserType>({
   },
   city: {
     type: String,
-    required: true,
+    //required: true,
   },
   gender: {
     type: String,

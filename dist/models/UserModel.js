@@ -14,7 +14,7 @@ const schema = new mongoose_1.Schema({
     },
     city: {
         type: String,
-        required: true,
+        //required: true,
     },
     gender: {
         type: String,
