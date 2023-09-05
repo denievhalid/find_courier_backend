@@ -22,7 +22,7 @@ class UserController {
 
   async changeAvatar(req: Request, res: Response) {
     try {
-      return res.status(200).json({ success: true });
+      return res.status(200).json({ path: req.file?.path, success: true });
     } catch (error) {
       return res.status(500).json({ error, success: false });
     }
