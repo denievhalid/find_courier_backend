@@ -9,11 +9,11 @@ import type { RequestWithUserType } from "../types";
 class UserController {
   async create(req: Request, res: Response) {
     const {
-      body: { name, gender },
+      body: { avatar, name, gender },
     } = req;
 
     try {
-      await UserService.create({ name, gender });
+      await UserService.create({ avatar, name, gender });
       return res.status(201).json({ success: true });
     } catch (error) {
       return res.status(500).json({ error, success: false });

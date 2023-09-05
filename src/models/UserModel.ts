@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 import type { UserType } from "../types";
 
 const schema = new Schema<UserType>({
+  avatar: String,
   phoneNumber: {
     type: Number,
     unique: true,

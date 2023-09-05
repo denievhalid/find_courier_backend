@@ -7,7 +7,7 @@ export default configureRoutes([
   {
     path: "/create",
     method: "post",
-    actions: [multer.array("avatar", 1), UserController.changeAvatar],
+    actions: [UserController.create],
   },
   {
     path: "/changeAvatar",

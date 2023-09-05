@@ -20,10 +20,11 @@ export type AdType = {
 };
 
 export type UserType = {
+  avatar?: string;
   phoneNumber: number;
-  name?: string;
-  gender?: string;
-  city?: string;
+  name: string;
+  gender: string;
+  city: string;
 };
 
 export type FavoriteType = {
