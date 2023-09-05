@@ -10,7 +10,7 @@ import type { RequestWithUserType } from "../types";
 class UserController {
   async create(req: Request, res: Response) {
     let {
-      body: { avatar, name, gender },
+      body: { avatar, gender, name, phoneNumber },
     } = req;
 
     try {
@@ -19,7 +19,7 @@ class UserController {
         gender = gender?.id;
       }
 
-      await UserService.create({ avatar, name, gender });
+      await UserService.create({ avatar, gender, name, phoneNumber });
       return res.status(201).json({ success: true });
     } catch (error) {
       return res.status(500).json({ error, success: false });
