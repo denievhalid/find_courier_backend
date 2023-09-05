@@ -14,11 +14,6 @@ class UserController {
     } = req;
 
     try {
-      if (_.isObject(gender)) {
-        // @ts-ignore
-        gender = gender?.id;
-      }
-
       await UserService.create({ avatar, gender, name, phoneNumber });
       return res.status(201).json({ success: true });
     } catch (error) {
