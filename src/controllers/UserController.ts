@@ -1,20 +1,21 @@
 import type { Request, Response } from "express";
 import UserService from "../services/UserService";
-import _ from "lodash";
-import jwt from "jsonwebtoken";
-import i18n from "../i18n";
-import getEnvProperty from "../utils/getEnvProperty";
-import { ENV } from "../constants";
-import type { RequestWithUserType } from "../types";
 
 class UserController {
   async create(req: Request, res: Response) {
     let {
-      body: { avatar, gender, name, phoneNumber },
+      body: { gender, name, phoneNumber },
+      file,
     } = req;
 
     try {
-      await UserService.create({ avatar, gender, name, phoneNumber });
+      await UserService.create({
+        avatar: file?.path,
+        gender,
+        name,
+        phoneNumber,
+      });
+
       return res.status(201).json({ success: true });
     } catch (error) {
       return res.status(500).json({ error, success: false });

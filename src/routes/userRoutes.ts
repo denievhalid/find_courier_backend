@@ -1,13 +1,12 @@
 import UserController from "../controllers/UserController";
 import { configureRoutes } from "../utils/configureRoutes";
-import checkAuth from "../middlewares/checkAuth";
 import multer from "../utils/multer";
 
 export default configureRoutes([
   {
     path: "/create",
     method: "post",
-    actions: [UserController.create],
+    actions: [multer.single("avatar"), UserController.create],
   },
   {
     path: "/changeAvatar",
