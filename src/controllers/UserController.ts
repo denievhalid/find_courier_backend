@@ -1,5 +1,9 @@
 import type { Request, Response } from "express";
 import UserService from "../services/UserService";
+import generateHash from "../utils/generateHash";
+import jwt from "jsonwebtoken";
+import getEnvProperty from "../utils/getEnvProperty";
+import { ENV } from "../constants";
 
 class UserController {
   async create(req: Request, res: Response) {
@@ -16,7 +20,18 @@ class UserController {
         phoneNumber,
       });
 
-      return res.status(201).json({ success: true });
+      const tokens = {
+        accessToken: jwt.sign(
+          {
+            name,
+            phoneNumber,
+          },
+          getEnvProperty(ENV.JWT_SECRET)
+        ),
+        refreshToken: generateHash(),
+      };
+
+      return res.status(201).json({ success: true, ...tokens });
     } catch (error) {
       return res.status(500).json({ error, success: false });
     }
