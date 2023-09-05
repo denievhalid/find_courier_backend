@@ -7,9 +7,21 @@ import { ENV } from "../constants";
 import type { RequestWithUserType } from "../types";
 
 class UserController {
+  async create(req: Request, res: Response) {
+    const {
+      body: { name, gender },
+    } = req;
+
+    try {
+      await UserService.create({ name, gender });
+      return res.status(201).json({ success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
+  }
+
   async changeAvatar(req: Request, res: Response) {
     try {
-      console.log(req.files);
       return res.status(200).json({ success: true });
     } catch (error) {
       return res.status(500).json({ error, success: false });
