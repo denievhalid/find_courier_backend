@@ -7,10 +7,18 @@ const schema = new Schema<UserType>({
     unique: true,
     required: true,
   },
-  isNew: {
-    type: Boolean,
+  name: {
+    type: String,
     required: true,
-    default: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    enum: ["f", "m"],
+    required: true,
   },
 });
 

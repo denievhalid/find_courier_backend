@@ -20,7 +20,6 @@ export type AdType = {
 };
 
 export type UserType = {
-  isNew: boolean;
   phoneNumber: number;
   name?: string;
   gender?: string;
