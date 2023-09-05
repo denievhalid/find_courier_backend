@@ -18,7 +18,7 @@ class AdService<T> {
   }
 
   getList(filter?: T) {
-    return AdModel.find();
+    return AdModel.find().populate("user");
   }
 
   delete(id: string) {
