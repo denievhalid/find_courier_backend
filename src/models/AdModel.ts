@@ -18,13 +18,11 @@ const schema = new Schema<AdType>({
   },
   route: {
     from: {
-      type: Schema.Types.ObjectId,
-      ref: "Route",
+      city_name: String,
       //required: true,
     },
     to: {
-      type: Schema.Types.ObjectId,
-      ref: "Route",
+      city_name: String,
       //required: true,
     },
   },
