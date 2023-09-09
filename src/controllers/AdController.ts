@@ -45,7 +45,7 @@ class AdController {
 
     try {
       const data = await AdService.getList();
-      return res.status(200).json(data);
+      return res.status(200).json({ data });
     } catch (err) {
       console.log(err);
     }
