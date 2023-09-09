@@ -7,7 +7,7 @@ import i18n from "../i18n";
 
 export default configureRoutes([
   {
-    path: "/",
+    path: "/getList",
     method: "get",
     actions: [AdsController.getList],
   },
