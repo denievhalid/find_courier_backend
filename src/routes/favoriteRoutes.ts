@@ -1,11 +1,12 @@
 import { configureRoutes } from "../utils/configureRoutes";
 import FavoriteController from "../controllers/FavoriteController";
+import checkAuth from "../middlewares/checkAuth";
 
 export default configureRoutes([
   {
     path: "/getList",
     method: "get",
-    actions: [FavoriteController.get],
+    actions: [checkAuth, FavoriteController.get],
   },
   {
     path: "/:id",
