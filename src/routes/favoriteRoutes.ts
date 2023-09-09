@@ -3,7 +3,7 @@ import FavoriteController from "../controllers/FavoriteController";
 
 export default configureRoutes([
   {
-    path: "/",
+    path: "/getList",
     method: "get",
     actions: [FavoriteController.get],
   },
