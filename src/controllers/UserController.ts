@@ -13,7 +13,7 @@ class UserController {
     } = req;
 
     try {
-      await UserService.create({
+      const user = await UserService.create({
         avatar: file?.path,
         gender,
         name,
@@ -31,7 +31,7 @@ class UserController {
         refreshToken: generateHash(),
       };
 
-      return res.status(201).json({ success: true, ...tokens });
+      return res.status(201).json({ success: true, user, ...tokens });
     } catch (error) {
       return res.status(500).json({ error, success: false });
     }
