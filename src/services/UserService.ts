@@ -6,7 +6,7 @@ class UserService<T> {
   get() {}
 
   getByLogin(login: string) {
-    return UserModel.findOne({ login });
+    return UserModel.findOne({ login }).populate("route");
   }
 
   getByPhoneNumber(phoneNumber: number) {
