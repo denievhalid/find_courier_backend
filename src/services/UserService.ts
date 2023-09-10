@@ -20,7 +20,7 @@ class UserService<T> {
   }
 
   update(id: string, update: UpdateQuery<T>) {
-    return UserModel.findByIdAndUpdate(id, update).exec();
+    return UserModel.findByIdAndUpdate(id, update);
   }
 
   delete() {}

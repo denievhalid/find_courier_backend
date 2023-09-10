@@ -44,7 +44,11 @@ class UserController {
     } = req;
 
     try {
-      await UserService.update(id, { avatar: file?.path });
+      const doc = await UserService.update(id, { avatar: file?.path });
+
+      if (!doc) {
+        return res.status(400).json({ success: false });
+      }
 
       return res.status(200).json({ path: file?.path, success: true });
     } catch (error) {

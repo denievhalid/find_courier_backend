@@ -17,7 +17,7 @@ class UserService {
         return UserModel_1.default.create(payload);
     }
     update(id, update) {
-        return UserModel_1.default.findByIdAndUpdate(id, update).exec();
+        return UserModel_1.default.findByIdAndUpdate(id, update);
     }
     delete() { }
 }
