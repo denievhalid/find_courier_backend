@@ -37,9 +37,16 @@ class UserController {
     }
   }
 
-  async changeAvatar(req: Request, res: Response) {
+  async updateAvatar(req: Request, res: Response) {
+    const {
+      body: { id },
+      file,
+    } = req;
+
     try {
-      return res.status(200).json({ path: req.file?.path, success: true });
+      await UserService.update(id, { avatar: file?.path });
+
+      return res.status(200).json({ path: file?.path, success: true });
     } catch (error) {
       return res.status(500).json({ error, success: false });
     }

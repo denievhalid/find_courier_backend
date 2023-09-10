@@ -10,9 +10,9 @@ export default configureRoutes([
     actions: [multer.single("avatar"), UserController.create],
   },
   {
-    path: "/changeAvatar",
+    path: "/updateAvatar",
     method: "post",
-    actions: [multer.single("avatar"), UserController.changeAvatar],
+    actions: [multer.single("avatar"), UserController.updateAvatar],
   },
   {
     path: "/updateProfile",
