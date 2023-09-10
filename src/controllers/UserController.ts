@@ -83,11 +83,11 @@ class UserController {
 
   async updateProfile(req: Request, res: Response) {
     const {
-      body: { id, gender, name, city },
+      body: { id, property, value },
     } = req;
 
     try {
-      const update = await UserService.update(id, { gender, name, city });
+      const update = await UserService.update(id, { [property]: value });
 
       if (!update) {
         return res.status(400).json({ success: false });
