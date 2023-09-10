@@ -52,7 +52,7 @@ class AuthController {
       body: { pinCode, secret },
     } = req;
 
-    let token;
+    let accessToken;
 
     try {
       const doc = await PinCodeService.getOne({
@@ -81,15 +81,17 @@ class AuthController {
       const user = await UserService.getByPhoneNumber(doc.phoneNumber);
 
       if (user) {
-        token = jwt.sign(
+        accessToken = jwt.sign(
           { _id: user._id, phoneNumber: user.phoneNumber },
           getEnvProperty(ENV.JWT_SECRET)
         );
       }
 
-      return res.status(200).json({ token, userExist: Boolean(user) });
+      return res
+        .status(200)
+        .json({ accessToken, userExist: Boolean(user), success: true });
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ error, success: false });
     }
   }
 }
