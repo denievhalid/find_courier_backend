@@ -19,8 +19,8 @@ class UserService<T> {
     return UserModel.create(payload);
   }
 
-  update(payload: FilterQuery<T>, update: UpdateQuery<T>) {
-    return UserModel.findOneAndUpdate(payload, update);
+  update(id: string, update: UpdateQuery<T>) {
+    return UserModel.findByIdAndUpdate(id, update).exec();
   }
 
   delete() {}

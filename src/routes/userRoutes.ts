@@ -16,7 +16,7 @@ export default configureRoutes([
   },
   {
     path: "/updateProfile",
-    method: "post",
-    actions: [checkAuth, UserController.updateProfile],
+    method: "patch",
+    actions: [UserController.updateProfile],
   },
 ]);
