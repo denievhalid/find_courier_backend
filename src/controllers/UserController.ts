@@ -61,6 +61,7 @@ class UserController {
 
       return res.status(200).json({ path: file?.path, success: true });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ error, success: false });
     }
   }

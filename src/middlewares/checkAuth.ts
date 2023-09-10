@@ -33,7 +33,7 @@ export default async function checkAuth(
         }
 
         // @ts-ignore
-        req.user = user;
+        req.user = userData;
 
         next();
       }
