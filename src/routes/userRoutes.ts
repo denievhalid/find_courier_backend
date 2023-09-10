@@ -12,7 +12,7 @@ export default configureRoutes([
   {
     path: "/updateAvatar",
     method: "post",
-    actions: [multer.single("avatar"), UserController.updateAvatar],
+    actions: [checkAuth, multer.single("avatar"), UserController.updateAvatar],
   },
   {
     path: "/updateProfile",
