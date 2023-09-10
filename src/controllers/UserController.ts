@@ -37,6 +37,15 @@ class UserController {
     }
   }
 
+  async getProfile(req: Request, res: Response) {
+    try {
+      // @ts-ignore
+      return res.status(200).json({ user: req?.user, success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
+  }
+
   async updateAvatar(req: Request, res: Response) {
     const {
       body: { id },
