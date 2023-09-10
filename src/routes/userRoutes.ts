@@ -21,7 +21,7 @@ export default configureRoutes([
   },
   {
     path: "/getProfile",
-    method: "patch",
+    method: "get",
     actions: [checkAuth, UserController.getProfile],
   },
 ]);
