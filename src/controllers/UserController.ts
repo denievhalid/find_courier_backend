@@ -44,6 +44,20 @@ class UserController {
       return res.status(500).json({ error, success: false });
     }
   }
+
+  async updateProfile(req: Request, res: Response) {
+    const {
+      body: { _id, gender, name, city },
+    } = req;
+
+    try {
+      await UserService.update({ _id }, { gender, name, city });
+
+      return res.status(200).json({ success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
+  }
 }
 
 export default new UserController();
