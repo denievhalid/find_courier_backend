@@ -15,6 +15,11 @@ export default configureRoutes([
     actions: [multer.single("avatar"), UserController.updateAvatar],
   },
   {
+    path: "/updateLocation",
+    method: "patch",
+    actions: [checkAuth, UserController.updateLocation],
+  },
+  {
     path: "/updateProfile",
     method: "patch",
     actions: [checkAuth, UserController.updateProfile],

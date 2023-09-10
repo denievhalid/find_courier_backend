@@ -21,6 +21,10 @@ const schema = new Schema<UserType>({
     enum: ["f", "m"],
     required: true,
   },
+  route: {
+    type: Schema.Types.ObjectId,
+    ref: "Route",
+  },
 });
 
 export default model<UserType>("User", schema);

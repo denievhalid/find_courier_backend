@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import getEnvProperty from "../utils/getEnvProperty";
 import { ENV } from "../constants";
 import getAvatarPath from "../utils/getAvatarPath";
+import RouteService from "../services/RouteService";
 
 class UserController {
   async create(req: Request, res: Response) {
@@ -76,7 +77,30 @@ class UserController {
         .status(200)
         .json({ avatar: getAvatarPath(file!.path), success: true });
     } catch (error) {
-      console.log(error);
+      return res.status(500).json({ error, success: false });
+    }
+  }
+
+  async updateLocation(req: Request, res: Response) {
+    const {
+      body: { id, route },
+    } = req;
+
+    try {
+      let doc = await RouteService.getByKladr(route?.city_kladr);
+
+      if (!doc) {
+        doc = await RouteService.create(route);
+      }
+
+      const update = await UserService.update(id, { route: doc });
+
+      if (!update) {
+        return res.status(400).json({ success: false });
+      }
+
+      return res.status(200).json({ success: true });
+    } catch (error) {
       return res.status(500).json({ error, success: false });
     }
   }

@@ -25,6 +25,7 @@ export type UserType = {
   name: string;
   gender: string;
   city: string;
+  route: RouteType;
 };
 
 export type FavoriteType = {
