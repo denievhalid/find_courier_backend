@@ -14,12 +14,18 @@ class UserController {
     } = req;
 
     try {
-      const user = await UserService.create({
-        avatar: file?.path,
+      const payload = {
         gender,
         name,
         phoneNumber,
-      });
+      };
+
+      if (file) {
+        // @ts-ignore
+        payload.avatar = getAvatarPath(file.path);
+      }
+
+      const user = await UserService.create(payload);
 
       const tokens = {
         accessToken: jwt.sign(
