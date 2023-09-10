@@ -1,4 +1,5 @@
 export const ENV = {
+  HOST: "host",
   JWT_SECRET: "jwt_secret",
   PORT: "port",
   MONGOOSE_URI: "mongoose_uri",

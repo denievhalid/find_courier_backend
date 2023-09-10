@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PIN_CODE = exports.ROUTES = exports.ENV = void 0;
 exports.ENV = {
+    HOST: "host",
     JWT_SECRET: "jwt_secret",
     PORT: "port",
     MONGOOSE_URI: "mongoose_uri",

@@ -4,6 +4,7 @@ import generateHash from "../utils/generateHash";
 import jwt from "jsonwebtoken";
 import getEnvProperty from "../utils/getEnvProperty";
 import { ENV } from "../constants";
+import getAvatarPath from "../utils/getAvatarPath";
 
 class UserController {
   async create(req: Request, res: Response) {
@@ -59,7 +60,9 @@ class UserController {
         return res.status(400).json({ success: false });
       }
 
-      return res.status(200).json({ path: file?.path, success: true });
+      return res
+        .status(200)
+        .json({ avatar: getAvatarPath(file!.path), success: true });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error, success: false });
