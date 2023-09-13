@@ -28,6 +28,11 @@ export default configureRoutes([
     ],
   },
   {
+    path: "/updateStatus",
+    method: "patch",
+    actions: [AdsController.updateStatus],
+  },
+  {
     path: "/:id",
     method: "delete",
     actions: [AdsController.delete],

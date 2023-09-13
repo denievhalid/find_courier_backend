@@ -1,7 +1,7 @@
 import _ from "lodash";
 import type { NextFunction, Request, Response } from "express";
 import AdService from "../services/AdService";
-import { validationResult } from "express-validator";
+import { body, validationResult } from "express-validator";
 
 class AdController {
   async create(req: Request, res: Response) {
@@ -48,6 +48,18 @@ class AdController {
       return res.status(200).json({ data });
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async updateStatus(req: Request, res: Response) {
+    const {
+      body: { id, status },
+    } = req;
+    try {
+      const doc = await AdService.update(req.params.id, { status });
+      return res.status(200).json({ success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
     }
   }
 

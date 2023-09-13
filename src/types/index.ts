@@ -17,6 +17,7 @@ export type AdType = {
   price: number;
   user: UserType;
   weight: string;
+  status: "pending" | "approved" | "rejected";
 };
 
 export type UserType = {

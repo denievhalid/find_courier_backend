@@ -34,6 +34,10 @@ const schema = new Schema<AdType>({
     type: Number,
     required: true,
   },
+  status: {
+    type: String,
+    enum: ["pending", "approved", "rejected"],
+  },
 });
 
 export default model<AdType>("Ad", schema);
