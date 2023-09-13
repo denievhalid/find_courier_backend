@@ -3,6 +3,7 @@ import DeliveryService from "../services/DeliveryService";
 
 class DeliveryController {
   async getList(req: Request, res: Response) {
+    // @ts-ignore
     const { user } = req;
 
     try {
