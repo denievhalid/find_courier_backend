@@ -10,7 +10,7 @@ class UserService<T> {
   }
 
   getByPhoneNumber(phoneNumber: number) {
-    return UserModel.findOne({ phoneNumber });
+    return UserModel.findOne({ phoneNumber }).populate("route");
   }
 
   sendCode(login: string) {}
