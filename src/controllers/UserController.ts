@@ -10,7 +10,7 @@ import RouteService from "../services/RouteService";
 class UserController {
   async create(req: Request, res: Response) {
     let {
-      body: { gender, name, phoneNumber },
+      body: { gender, name, phoneNumber, route },
       file,
     } = req;
 
@@ -18,6 +18,7 @@ class UserController {
       const payload = {
         gender,
         name,
+        route,
         phoneNumber,
       };
 
