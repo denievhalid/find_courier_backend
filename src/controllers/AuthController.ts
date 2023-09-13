@@ -64,7 +64,10 @@ class AuthController {
 
       if (!doc) {
         return res.status(400).json({
-          message: i18n.__("invalid_code"),
+          success: false,
+          error: {
+            message: i18n.__("invalid_code"),
+          },
         });
       }
 
@@ -72,7 +75,10 @@ class AuthController {
 
       if (!verify) {
         return res.status(400).json({
-          message: i18n.__("invalid_code"),
+          success: false,
+          error: {
+            message: i18n.__("invalid_code"),
+          },
         });
       }
 
