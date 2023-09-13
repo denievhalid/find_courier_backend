@@ -10,6 +10,7 @@ import userRoutes from "./routes/userRoutes";
 import adsRoutes from "./routes/adsRoutes";
 import favoriteRoutes from "./routes/favoriteRoutes";
 import authRoutes from "./routes/authRoutes";
+import deliveryRoutes from "./routes/deliveryRoutes";
 
 function createServer() {
   const server: Express = express();
@@ -39,6 +40,7 @@ function useMiddlewares(server: Express) {
 function useRoutes(server: Express) {
   server.use(ROUTES.ADS, adsRoutes);
   server.use(ROUTES.AUTH, authRoutes);
+  server.use(ROUTES.DELIVERIES, deliveryRoutes);
   server.use(ROUTES.FAVORITES, favoriteRoutes);
   server.use(ROUTES.USERS, userRoutes);
 }

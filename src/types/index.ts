@@ -20,6 +20,14 @@ export type AdType = {
   status: "pending" | "approved" | "rejected";
 };
 
+export type DeliveryType = {
+  route: {
+    from: RouteType;
+    to: RouteType;
+  };
+  user: UserType;
+};
+
 export type UserType = {
   avatar?: string;
   phoneNumber: number;

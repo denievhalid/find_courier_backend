@@ -12,6 +12,7 @@ export const ENV = {
 export const ROUTES = {
   ADS: "/ads",
   AUTH: "/auth",
+  DELIVERIES: "/deliveries",
   FAVORITES: "/favorites",
   USERS: "/users",
 };
