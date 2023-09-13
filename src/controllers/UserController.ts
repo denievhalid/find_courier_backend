@@ -15,16 +15,16 @@ class UserController {
     } = req;
 
     try {
-      let routeDoc = await RouteService.getByKladr(route?.city_kladr);
+      //let routeDoc = await RouteService.getByKladr(route?.city_kladr);
 
-      if (!routeDoc) {
-        routeDoc = await RouteService.create(route);
-      }
+      //if (!routeDoc) {
+      //routeDoc = await RouteService.create(route);
+      //}
 
       const payload = {
         gender,
         name,
-        route: routeDoc,
+        //route: routeDoc,
         phoneNumber,
       };
 
