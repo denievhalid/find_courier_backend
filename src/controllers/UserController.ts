@@ -10,21 +10,21 @@ import RouteService from "../services/RouteService";
 class UserController {
   async create(req: Request, res: Response) {
     let {
-      body: { gender, name, phoneNumber, route },
+      body: { gender, name, phoneNumber, city_kladr, city_name },
       file,
     } = req;
 
     try {
-      //let routeDoc = await RouteService.getByKladr(route?.city_kladr);
+      let routeDoc = await RouteService.getByKladr(city_kladr);
 
-      //if (!routeDoc) {
-      //routeDoc = await RouteService.create(route);
-      //}
+      if (!routeDoc) {
+        routeDoc = await RouteService.create({ city_kladr, city_name });
+      }
 
       const payload = {
         gender,
         name,
-        //route: routeDoc,
+        route: routeDoc,
         phoneNumber,
       };
 
