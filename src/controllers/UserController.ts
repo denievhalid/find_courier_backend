@@ -94,6 +94,11 @@ class UserController {
     } = req;
 
     try {
+      // @ts-ignore
+      if (req.user.city_kladr === route.city_kladr) {
+        return res.status(200).json({ success: true });
+      }
+
       let doc = await RouteService.getByKladr(route?.city_kladr);
 
       if (!doc) {
