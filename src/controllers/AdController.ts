@@ -6,7 +6,7 @@ import RouteService from "../services/RouteService";
 
 class AdController {
   async create(req: Request, res: Response) {
-    const {
+    let {
       body: { title, price, route, weight },
       files,
     } = req;
@@ -17,6 +17,8 @@ class AdController {
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
+
+      route = JSON.parse(route);
       // @ts-ignore
       const images = files?.map((file) => file.path);
 
