@@ -15,6 +15,7 @@ const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const adsRoutes_1 = __importDefault(require("./routes/adsRoutes"));
 const favoriteRoutes_1 = __importDefault(require("./routes/favoriteRoutes"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const deliveryRoutes_1 = __importDefault(require("./routes/deliveryRoutes"));
 function createServer() {
     const server = (0, express_1.default)();
     useMiddlewares(server);
@@ -35,6 +36,7 @@ function useMiddlewares(server) {
 function useRoutes(server) {
     server.use(constants_1.ROUTES.ADS, adsRoutes_1.default);
     server.use(constants_1.ROUTES.AUTH, authRoutes_1.default);
+    server.use(constants_1.ROUTES.DELIVERIES, deliveryRoutes_1.default);
     server.use(constants_1.ROUTES.FAVORITES, favoriteRoutes_1.default);
     server.use(constants_1.ROUTES.USERS, userRoutes_1.default);
 }

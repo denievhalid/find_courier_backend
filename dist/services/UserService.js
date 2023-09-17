@@ -7,10 +7,10 @@ const UserModel_1 = __importDefault(require("../models/UserModel"));
 class UserService {
     get() { }
     getByLogin(login) {
-        return UserModel_1.default.findOne({ login });
+        return UserModel_1.default.findOne({ login }).populate("route");
     }
     getByPhoneNumber(phoneNumber) {
-        return UserModel_1.default.findOne({ phoneNumber });
+        return UserModel_1.default.findOne({ phoneNumber }).populate("route");
     }
     sendCode(login) { }
     create(payload) {

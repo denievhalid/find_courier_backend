@@ -17,7 +17,7 @@ export default configureRoutes([
     actions: [AdsController.getOne],
   },
   {
-    path: "/",
+    path: "/create",
     method: "post",
     actions: [
       multer.array("images", 5),
