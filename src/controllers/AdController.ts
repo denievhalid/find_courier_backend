@@ -2,11 +2,12 @@ import _ from "lodash";
 import type { NextFunction, Request, Response } from "express";
 import AdService from "../services/AdService";
 import { body, validationResult } from "express-validator";
+import RouteService from "../services/RouteService";
 
 class AdController {
   async create(req: Request, res: Response) {
     const {
-      body: { title, price, weight },
+      body: { title, price, route, weight },
       files,
     } = req;
 
@@ -16,7 +17,6 @@ class AdController {
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
-
       // @ts-ignore
       const images = files?.map((file) => file.path);
 
@@ -24,6 +24,7 @@ class AdController {
       await AdService.create({
         title,
         price,
+        route,
         weight,
         images,
       });
