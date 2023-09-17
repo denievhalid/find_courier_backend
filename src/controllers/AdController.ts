@@ -24,7 +24,7 @@ class AdController {
       // @ts-ignore
       const images = files?.map((file) => file.path);
 
-      const cover = { uri: images[0] };
+      const cover = { uri: `https://findcourier.ru/${images[0]}` };
 
       // @ts-ignore
       const user = req.user;
