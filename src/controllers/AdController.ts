@@ -52,6 +52,11 @@ class AdController {
 
     try {
       const data = await AdService.getList();
+
+      data.images = data.images.map((image) => ({
+        uri: `https://findcourier.ru/${image}`,
+      }));
+
       return res.status(200).json({ data });
     } catch (err) {
       console.log(err);
