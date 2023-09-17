@@ -54,7 +54,7 @@ class AdController {
     try {
       const docs = await AdService.getList();
 
-      let data: AdType[] = docs.reduce<AdType[]>((doc, current) => {
+      const data: AdType[] = docs.reduce<AdType[]>((doc, current) => {
         current.images = current.images.map((image) => ({
           uri: `https://findcourier.ru/${image}`,
         }));
