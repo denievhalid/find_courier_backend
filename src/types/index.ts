@@ -13,6 +13,9 @@ export type AdType = {
     from: RouteType;
     to: RouteType;
   };
+  cover: {
+    uri: string;
+  };
   images: Array<{ uri: string }>;
   price: number;
   user: UserType;

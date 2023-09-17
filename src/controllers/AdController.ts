@@ -20,14 +20,18 @@ class AdController {
       }
 
       route = JSON.parse(route);
+
       // @ts-ignore
       const images = files?.map((file) => file.path);
+
+      const cover = { uri: images[0] };
 
       // @ts-ignore
       const user = req.user;
 
       // @ts-ignore
       await AdService.create({
+        cover,
         title,
         price,
         route,
@@ -35,6 +39,7 @@ class AdController {
         images,
         user,
       });
+
       return res.status(201).json({ success: true });
     } catch (err) {
       return res.status(400).json(err);

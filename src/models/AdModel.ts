@@ -6,6 +6,9 @@ const schema = new Schema<AdType>({
     type: String,
     required: true,
   },
+  cover: {
+    uri: String,
+  },
   images: [
     {
       type: String,
