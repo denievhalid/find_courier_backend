@@ -9,7 +9,6 @@ class AdController {
     const {
       body: { title, price, route, weight },
       files,
-      user,
     } = req;
 
     try {
@@ -20,6 +19,9 @@ class AdController {
       }
       // @ts-ignore
       const images = files?.map((file) => file.path);
+
+      // @ts-ignore
+      const user = req.user;
 
       // @ts-ignore
       await AdService.create({
