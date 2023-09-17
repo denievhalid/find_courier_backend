@@ -9,7 +9,6 @@ const schema = new Schema<AdType>({
   images: [
     {
       type: String,
-      //required: true,
     },
   ],
   user: {
@@ -19,11 +18,11 @@ const schema = new Schema<AdType>({
   route: {
     from: {
       city_name: String,
-      //required: true,
+      city_kladr: String,
     },
     to: {
       city_name: String,
-      //required: true,
+      city_kladr: String,
     },
   },
   weight: {

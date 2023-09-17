@@ -9,6 +9,7 @@ class AdController {
     const {
       body: { title, price, route, weight },
       files,
+      user,
     } = req;
 
     try {
@@ -27,8 +28,9 @@ class AdController {
         route,
         weight,
         images,
+        user,
       });
-      return res.sendStatus(201);
+      return res.status(201).json({ success: true });
     } catch (err) {
       return res.status(400).json(err);
     }

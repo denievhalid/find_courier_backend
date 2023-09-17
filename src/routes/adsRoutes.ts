@@ -4,6 +4,7 @@ import { body } from "express-validator";
 //import { getLocationByKladr } from "../middlewares/getLocationByKladr";
 import multer from "../utils/multer";
 import i18n from "../i18n";
+import checkAuth from "../middlewares/checkAuth";
 
 export default configureRoutes([
   {
@@ -20,6 +21,7 @@ export default configureRoutes([
     path: "/create",
     method: "post",
     actions: [
+      checkAuth,
       multer.array("images", 5),
       body("title").notEmpty().withMessage(i18n.__("required_field")),
       body("price").notEmpty().withMessage(i18n.__("required_field")),
