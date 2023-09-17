@@ -13,7 +13,7 @@ export type AdType = {
     from: RouteType;
     to: RouteType;
   };
-  images?: string | [string];
+  images: Array<{ uri: string }>;
   price: number;
   user: UserType;
   weight: string;

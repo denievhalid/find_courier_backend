@@ -22,7 +22,7 @@ class AdService<T> {
   }
 
   getList(filter?: T) {
-    return AdModel.find().populate("user");
+    return AdModel.find().populate("user").lean();
   }
 
   delete(id: string) {
