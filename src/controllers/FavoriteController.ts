@@ -6,8 +6,14 @@ class FavoriteController {
 
   async get(req: Request, res: Response) {
     try {
-      const result = await FavoriteService.get();
-      return res.status(200).json(result);
+      const filter = {
+        // @ts-ignore
+        user: req.user,
+      };
+
+      const data = await FavoriteService.get(filter);
+
+      return res.status(200).json({ success: true, data });
     } catch (error) {
       return res.status(500).json({ error, success: false });
     }

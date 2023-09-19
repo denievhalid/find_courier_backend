@@ -6,6 +6,11 @@ const schema = new Schema<FavoriteType>({
     type: Schema.Types.ObjectId,
     ref: "Ad",
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 export default model<FavoriteType>("Favorite", schema);

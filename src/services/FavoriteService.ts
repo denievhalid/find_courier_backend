@@ -1,10 +1,14 @@
 import FavoriteModel from "../models/FavoriteModel";
+import type { FilterQuery } from "mongoose";
 
 class FavoriteService<T> {
   create() {}
 
-  get() {
+  get(filter: FilterQuery<T>) {
     return FavoriteModel.aggregate([
+      {
+        $match: filter,
+      },
       {
         $lookup: {
           from: "ads",

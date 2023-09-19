@@ -6,16 +6,16 @@ export default configureRoutes([
   {
     path: "/getList",
     method: "get",
-    actions: [checkAuth, FavoriteController.get],
+    actions: [checkAuth, checkAuth, FavoriteController.get],
   },
   {
     path: "/:id",
     method: "post",
-    actions: [FavoriteController.toggle],
+    actions: [checkAuth, FavoriteController.toggle],
   },
   {
     path: "/removeById/:id",
     method: "delete",
-    actions: [FavoriteController.delete],
+    actions: [checkAuth, FavoriteController.delete],
   },
 ]);

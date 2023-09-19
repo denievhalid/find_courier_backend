@@ -42,6 +42,7 @@ export type UserType = {
 
 export type FavoriteType = {
   ad: AdType;
+  user: UserType;
 };
 
 export type PinCodeType = {
