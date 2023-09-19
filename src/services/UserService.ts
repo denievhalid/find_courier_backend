@@ -23,7 +23,9 @@ class UserService<T> {
     return UserModel.findByIdAndUpdate(id, update);
   }
 
-  delete() {}
+  removeAvatar(id: string) {
+    return UserModel.findByIdAndUpdate(id, { $set: { avatar: null } });
+  }
 }
 
 export default new UserService<UserType>();

@@ -29,4 +29,9 @@ export default configureRoutes([
     method: "get",
     actions: [checkAuth, UserController.getProfile],
   },
+  {
+    path: "/removeAvatar",
+    method: "patch",
+    actions: [checkAuth, UserController.removeAvatar],
+  },
 ]);

@@ -134,6 +134,17 @@ class UserController {
       return res.status(500).json({ error, success: false });
     }
   }
+
+  async removeAvatar(req: Request, res: Response) {
+    try {
+      // @ts-ignore
+      await UserService.removeAvatar(req.user?._id);
+
+      return res.status(200).json({ success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
+  }
 }
 
 export default new UserController();
