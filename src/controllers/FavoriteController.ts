@@ -43,7 +43,13 @@ class FavoriteController {
     } = req;
 
     try {
-      await FavoriteService.deleteById(id as string);
+      const payload = {
+        id,
+        // @ts-ignore
+        user: req.user?._id,
+      };
+
+      await FavoriteService.deleteById(payload);
 
       return res.status(200).json({ success: true });
     } catch (error) {
