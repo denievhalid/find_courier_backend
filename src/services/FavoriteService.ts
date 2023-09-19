@@ -61,7 +61,7 @@ class FavoriteService<T> {
   }
 
   deleteById({ id, user }: { id: string; user: UserType }) {
-    return FavoriteModel.findOneAndRemove({ _id: id, user });
+    return FavoriteModel.findOneAndRemove({ ad: id, user });
   }
 }
 
