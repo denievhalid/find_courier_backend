@@ -9,7 +9,7 @@ export default configureRoutes([
     actions: [checkAuth, checkAuth, FavoriteController.get],
   },
   {
-    path: "/:id",
+    path: "/toggle/:id",
     method: "post",
     actions: [checkAuth, FavoriteController.toggle],
   },
