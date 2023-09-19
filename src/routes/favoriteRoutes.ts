@@ -6,7 +6,7 @@ export default configureRoutes([
   {
     path: "/getList",
     method: "get",
-    actions: [checkAuth, checkAuth, FavoriteController.get],
+    actions: [checkAuth, FavoriteController.get],
   },
   {
     path: "/toggle/:id",

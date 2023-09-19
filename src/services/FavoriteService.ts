@@ -5,10 +5,14 @@ import { UserType } from "../types";
 class FavoriteService<T> {
   create() {}
 
-  get(filter: FilterQuery<T>) {
+  get({ user }: FilterQuery<T>) {
     return FavoriteModel.aggregate([
       {
-        $match: filter,
+        $match: {
+          $expr: {
+            $eq: ["$user", { $toObjectId: user }],
+          },
+        },
       },
       {
         $lookup: {
