@@ -8,7 +8,7 @@ class FavoriteController {
     try {
       const filter = {
         // @ts-ignore
-        user: req.user,
+        user: req.user?._id,
       };
 
       const data = await FavoriteService.get(filter);
