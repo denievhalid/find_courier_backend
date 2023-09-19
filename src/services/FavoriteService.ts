@@ -1,5 +1,6 @@
 import FavoriteModel from "../models/FavoriteModel";
 import type { FilterQuery } from "mongoose";
+import { UserType } from "../types";
 
 class FavoriteService<T> {
   create() {}
@@ -30,24 +31,29 @@ class FavoriteService<T> {
     ]);
   }
 
-  async toggle(id: string) {
+  async toggle({ id: ad, user }: { id: string; user: UserType }) {
     try {
-      const item = await FavoriteModel.findOne({ ad: id });
+      const item = await FavoriteModel.findOne({ ad });
 
       if (item) {
-        await FavoriteModel.findOneAndRemove({ ad: id });
+        await FavoriteModel.findOneAndRemove({ ad });
 
         return {
           isFavorite: false,
         };
       }
 
-      await FavoriteModel.create({ ad: id });
+      await FavoriteModel.create({ ad, user });
 
       return {
         isFavorite: true,
       };
-    } catch (err) {}
+    } catch (error) {
+      console.log("error");
+      return {
+        isFavorite: false,
+      };
+    }
   }
 
   deleteById(id: string) {

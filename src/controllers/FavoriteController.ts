@@ -23,8 +23,14 @@ class FavoriteController {
     const { id } = req.params;
 
     try {
-      const data = await FavoriteService.toggle(id);
+      const payload = {
+        id,
+        // @ts-ignore
+        user: req.user,
+      };
 
+      const data = await FavoriteService.toggle(payload);
+      console.log(data);
       return res.status(200).json({ success: true, ...data });
     } catch (error) {
       return res.status(500).json({ error, success: false });
