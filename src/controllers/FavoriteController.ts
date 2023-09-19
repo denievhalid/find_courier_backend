@@ -8,7 +8,9 @@ class FavoriteController {
     try {
       const result = await FavoriteService.get();
       return res.status(200).json(result);
-    } catch (err) {}
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
   }
 
   async toggle(req: Request, res: Response) {
@@ -17,12 +19,24 @@ class FavoriteController {
     try {
       const result = await FavoriteService.toggle(id);
       return res.status(200).json(result);
-    } catch (err) {
-      return res.status(400).json(err);
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
     }
   }
 
-  remove() {}
+  async delete(req: Request, res: Response) {
+    const {
+      query: { id },
+    } = req;
+
+    try {
+      await FavoriteService.deleteById(id as string);
+
+      return res.status(200).json({ success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
+  }
 }
 
 export default new FavoriteController();

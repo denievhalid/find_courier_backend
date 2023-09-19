@@ -14,8 +14,8 @@ export default configureRoutes([
     actions: [FavoriteController.toggle],
   },
   {
-    path: "/:id",
+    path: "/removeById/:id",
     method: "delete",
-    actions: [FavoriteController.remove],
+    actions: [FavoriteController.delete],
   },
 ]);

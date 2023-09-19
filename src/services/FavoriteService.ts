@@ -46,7 +46,9 @@ class FavoriteService<T> {
     } catch (err) {}
   }
 
-  delete() {}
+  deleteById(id: string) {
+    return FavoriteModel.findByIdAndRemove(id);
+  }
 }
 
 export default new FavoriteService();
