@@ -25,7 +25,7 @@ class FavoriteController {
     try {
       const data = await FavoriteService.toggle(id);
 
-      return res.status(200).json({ success: true, data });
+      return res.status(200).json({ success: true, ...data });
     } catch (error) {
       return res.status(500).json({ error, success: false });
     }
@@ -33,7 +33,7 @@ class FavoriteController {
 
   async delete(req: Request, res: Response) {
     const {
-      query: { id },
+      params: { id },
     } = req;
 
     try {
