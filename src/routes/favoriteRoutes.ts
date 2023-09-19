@@ -11,7 +11,7 @@ export default configureRoutes([
   {
     path: "/toggle/:id",
     method: "post",
-    actions: [FavoriteController.toggle],
+    actions: [checkAuth, FavoriteController.toggle],
   },
   {
     path: "/removeById/:id",
