@@ -57,7 +57,17 @@ class AdController {
     const { from, to, date } = req.query;
 
     try {
-      const data = await AdService.getList();
+      const docs = await AdService.getList();
+
+      const data: AdType[] = docs.reduce<AdType[]>((doc, current) => {
+        current.images = current.images.map((image) => ({
+          uri: `https://findcourier.ru/${image}`,
+        }));
+
+        doc.push(current);
+
+        return doc;
+      }, []);
 
       return res.status(200).json({ data });
     } catch (err) {
