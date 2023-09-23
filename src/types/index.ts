@@ -54,3 +54,22 @@ export type PinCodeType = {
 export type RequestWithUserType = {
   user: string;
 } & Request;
+
+export type Filter =
+  | "eq"
+  | "neq"
+  | "lt"
+  | "lte"
+  | "gt"
+  | "gte"
+  | "in"
+  | "nin"
+  | "null";
+
+export type Query = {
+  sort?: string[] | null;
+  filter?: Filter | null;
+  limit?: number | null;
+  offset?: number | null;
+  page?: number | null;
+};
