@@ -41,6 +41,7 @@ const schema = new Schema<AdType>({
     type: String,
     enum: ["pending", "approved", "rejected"],
   },
+  isFavorite: Boolean,
 });
 
 export default model<AdType>("Ad", schema);

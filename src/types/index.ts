@@ -21,6 +21,7 @@ export type AdType = {
   user: UserType;
   weight: string;
   status: "pending" | "approved" | "rejected";
+  isFavorite?: boolean;
 };
 
 export type DeliveryType = {
