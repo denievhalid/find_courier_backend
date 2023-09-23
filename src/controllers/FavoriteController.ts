@@ -1,5 +1,6 @@
 import type { Request, Response } from "express";
 import FavoriteService from "../services/FavoriteService";
+import { AdType } from "../types";
 
 class FavoriteController {
   add() {}
@@ -11,7 +12,17 @@ class FavoriteController {
         user: req.user?._id,
       };
 
-      const data = await FavoriteService.get(filter);
+      const docs = await FavoriteService.get(filter);
+
+      const data: AdType[] = docs.reduce<AdType[]>((doc, current) => {
+        current.images = current.images.map((image) => ({
+          uri: `https://findcourier.ru/${image}`,
+        }));
+
+        doc.push(current);
+
+        return doc;
+      }, []);
 
       return res.status(200).json({ success: true, data });
     } catch (error) {
