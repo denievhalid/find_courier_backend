@@ -10,7 +10,7 @@ class FavoriteService<T> {
       {
         $match: {
           $expr: {
-            $eq: ["$user", { $toObjectId: user }],
+            //$eq: ["$user", { $toObjectId: user }],
           },
         },
       },

@@ -19,6 +19,8 @@ class UserService {
     update(id, update) {
         return UserModel_1.default.findByIdAndUpdate(id, update);
     }
-    delete() { }
+    removeAvatar(id) {
+        return UserModel_1.default.findByIdAndUpdate(id, { $set: { avatar: null } });
+    }
 }
 exports.default = new UserService();

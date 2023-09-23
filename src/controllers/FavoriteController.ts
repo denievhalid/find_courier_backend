@@ -12,7 +12,7 @@ class FavoriteController {
         user: req.user?._id,
       };
 
-      const docs = await FavoriteService.get(filter);
+      const docs: AdType[] = await FavoriteService.get(filter);
 
       const data: AdType[] = docs.reduce<AdType[]>((doc, current) => {
         current.images = current.images.map((image) => ({
