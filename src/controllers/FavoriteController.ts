@@ -12,17 +12,7 @@ class FavoriteController {
         user: req.user?._id,
       };
 
-      const docs: AdType[] = await FavoriteService.get(filter);
-
-      const data: AdType[] = docs.reduce<AdType[]>((doc, current) => {
-        current.images = current.images.map((image) => ({
-          uri: `https://findcourier.ru/${image}`,
-        }));
-
-        doc.push(current);
-
-        return doc;
-      }, []);
+      const data: AdType[] = await FavoriteService.get(filter);
 
       return res.status(200).json({ success: true, data });
     } catch (error) {
