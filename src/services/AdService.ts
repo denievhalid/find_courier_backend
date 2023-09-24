@@ -31,6 +31,14 @@ class AdService<T> {
       },
       {
         $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "_id",
+          as: "user",
+        },
+      },
+      {
+        $lookup: {
           from: "favorites",
           localField: "_id",
           foreignField: "ad",
@@ -40,6 +48,7 @@ class AdService<T> {
       {
         $set: {
           isFavorite: { $toBool: { $size: "$favorites" } },
+          user: { $first: "$user" },
         },
       },
     ]);
