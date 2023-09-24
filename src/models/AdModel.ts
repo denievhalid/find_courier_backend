@@ -35,7 +35,6 @@ const schema = new Schema<AdType>({
   },
   price: {
     type: Number,
-    required: true,
   },
   status: {
     type: String,
