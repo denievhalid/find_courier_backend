@@ -1,6 +1,7 @@
 import AdModel from "../models/AdModel";
 import { AdType } from "../types";
 import { FilterQuery, PipelineStage, Types, UpdateQuery } from "mongoose";
+import { AD_STATUSES } from "../constants";
 
 class AdService<T> {
   create(payload: T) {

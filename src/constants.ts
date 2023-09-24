@@ -21,3 +21,9 @@ export const PIN_CODE = {
   DIGITS: 4,
   DEADLINE: 60,
 };
+
+export const AD_STATUSES = {
+  APPROVED: "approved",
+  PENDING: "pending",
+  REJECTED: "rejected",
+};

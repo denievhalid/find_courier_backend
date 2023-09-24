@@ -20,7 +20,7 @@ export type AdType = {
   price: number;
   user: UserType;
   weight: string;
-  status: "pending" | "approved" | "rejected";
+  status: string;
   isFavorite?: boolean;
 };
 

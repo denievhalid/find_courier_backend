@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PIN_CODE = exports.ROUTES = exports.ENV = void 0;
+exports.AD_STATUSES = exports.PIN_CODE = exports.ROUTES = exports.ENV = void 0;
 exports.ENV = {
     HOST: "host",
     JWT_SECRET: "jwt_secret",
@@ -21,4 +21,9 @@ exports.ROUTES = {
 exports.PIN_CODE = {
     DIGITS: 4,
     DEADLINE: 60,
+};
+exports.AD_STATUSES = {
+    APPROVED: "approved",
+    PENDING: "pending",
+    REJECTED: "rejected",
 };

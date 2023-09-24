@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import type { AdType } from "../types";
+import { AD_STATUSES } from "../constants";
 
 const schema = new Schema<AdType>({
   title: {
@@ -38,8 +39,7 @@ const schema = new Schema<AdType>({
   },
   status: {
     type: String,
-    enum: ["pending", "approved", "rejected"],
-    default: "pending",
+    enum: [AD_STATUSES.APPROVED, AD_STATUSES.PENDING, AD_STATUSES.REJECTED],
   },
   isFavorite: Boolean,
 });

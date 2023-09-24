@@ -5,6 +5,7 @@ import { body, validationResult } from "express-validator";
 import RouteService from "../services/RouteService";
 import { AdType } from "../types";
 import { default as mongoose } from "mongoose";
+import { AD_STATUSES } from "../constants";
 
 class AdController {
   async create(req: Request, res: Response) {
@@ -39,6 +40,7 @@ class AdController {
         weight,
         images,
         user,
+        status: AD_STATUSES.PENDING,
       });
 
       return res.status(201).json({ success: true });
@@ -58,7 +60,11 @@ class AdController {
     const { from, to, date } = req.query;
 
     try {
-      const data = await AdService.getList({ $match: {} });
+      const data = await AdService.getList({
+        $match: {
+          status: AD_STATUSES.APPROVED,
+        },
+      });
 
       return res.status(200).json({ data });
     } catch (err) {
