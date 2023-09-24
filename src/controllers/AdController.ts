@@ -73,7 +73,7 @@ class AdController {
         $match: {
           $expr: {
             // @ts-ignore
-            $eq: ["$user", { $toObjectId: req.user }],
+            $eq: ["user", { $toObjectId: req.user?._id }],
           },
         },
       });
