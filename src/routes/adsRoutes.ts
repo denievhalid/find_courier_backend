@@ -15,7 +15,7 @@ export default configureRoutes([
   {
     path: "/getOwnList",
     method: "get",
-    actions: [AdsController.getOwnList],
+    actions: [checkAuth, AdsController.getOwnList],
   },
   {
     path: "/:id",
