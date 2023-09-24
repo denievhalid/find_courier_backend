@@ -8,7 +8,7 @@ import { AdType } from "../types";
 class AdController {
   async create(req: Request, res: Response) {
     let {
-      body: { title, price, route, weight },
+      body: { title, price = 0, route, weight },
       files,
     } = req;
 
