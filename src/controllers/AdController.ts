@@ -33,7 +33,7 @@ class AdController {
       await AdService.create({
         cover,
         title,
-        price: price ?? 0,
+        price,
         route,
         weight,
         images,
