@@ -39,6 +39,7 @@ const schema = new Schema<AdType>({
   status: {
     type: String,
     enum: ["pending", "approved", "rejected"],
+    default: "pending",
   },
   isFavorite: Boolean,
 });
