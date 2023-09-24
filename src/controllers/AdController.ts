@@ -44,8 +44,8 @@ class AdController {
       });
 
       return res.status(201).json({ success: true });
-    } catch (err) {
-      return res.status(400).json(err);
+    } catch (error) {
+      return res.status(400).json({ error, success: false });
     }
   }
 
@@ -53,7 +53,9 @@ class AdController {
     try {
       const data = await AdService.findOne(req.params.id);
       return res.status(200).json(data);
-    } catch (err) {}
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
+    }
   }
 
   async getList(req: Request, res: Response) {
@@ -61,14 +63,16 @@ class AdController {
 
     try {
       const data = await AdService.getList({
-        $match: {
-          status: AD_STATUSES.APPROVED,
+        match: {
+          $match: {
+            status: AD_STATUSES.APPROVED,
+          },
         },
       });
 
       return res.status(200).json({ data });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
     }
   }
 
@@ -77,17 +81,24 @@ class AdController {
 
     try {
       const data = await AdService.getList({
-        $match: {
-          $expr: {
-            // @ts-ignore
-            $eq: ["$user", { $toObjectId: req.user?._id }],
+        match: {
+          $match: {
+            $expr: {
+              // @ts-ignore
+              $eq: ["$user", { $toObjectId: req.user?._id }],
+            },
+          },
+        },
+        set: {
+          $set: {
+            owner: true,
           },
         },
       });
 
-      return res.status(200).json({ data });
-    } catch (err) {
-      console.log(err);
+      return res.status(200).json({ data, success: true });
+    } catch (error) {
+      return res.status(500).json({ error, success: false });
     }
   }
 

@@ -22,6 +22,7 @@ export type AdType = {
   weight: string;
   status: string;
   isFavorite?: boolean;
+  owner: boolean;
 };
 
 export type DeliveryType = {

@@ -22,9 +22,20 @@ class AdService<T> {
       });
   }
 
-  getList(filter: PipelineStage) {
-    return AdModel.aggregate([
-      filter,
+  getList({
+    match,
+    set,
+  }: {
+    match: PipelineStage.Match;
+    set?: PipelineStage.Set;
+  }) {
+    let pipeline: PipelineStage[] = [];
+
+    if (match) {
+      pipeline.push(match);
+    }
+
+    pipeline.push(
       {
         $sort: { _id: -1 },
       },
@@ -52,8 +63,16 @@ class AdService<T> {
           isFavorite: { $toBool: { $size: "$favorites" } },
           user: { $first: "$user" },
         },
-      },
-    ]);
+      }
+    );
+
+    if (set) {
+      pipeline.push(set);
+    }
+
+    console.log(pipeline);
+
+    return AdModel.aggregate(pipeline);
   }
 
   delete(id: string) {

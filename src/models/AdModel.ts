@@ -41,6 +41,10 @@ const schema = new Schema<AdType>({
     type: String,
     enum: [AD_STATUSES.APPROVED, AD_STATUSES.PENDING, AD_STATUSES.REJECTED],
   },
+  owner: {
+    type: Boolean,
+    default: false,
+  },
   isFavorite: Boolean,
 });
 
