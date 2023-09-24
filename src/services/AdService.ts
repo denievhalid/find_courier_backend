@@ -22,7 +22,27 @@ class AdService<T> {
   }
 
   getList(filter?: T) {
-    return AdModel.find().populate("user").lean();
+    return AdModel.aggregate([
+      {
+        $sort: { _id: -1 },
+      },
+      {
+        $limit: 20,
+      },
+      {
+        $lookup: {
+          from: "favorites",
+          localField: "_id",
+          foreignField: "ad",
+          as: "favorites",
+        },
+      },
+      {
+        $set: {
+          isFavorite: { $toBool: { $size: "$favorites" } },
+        },
+      },
+    ]);
   }
 
   delete(id: string) {
