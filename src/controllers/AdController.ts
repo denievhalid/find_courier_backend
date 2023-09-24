@@ -4,6 +4,7 @@ import AdService from "../services/AdService";
 import { body, validationResult } from "express-validator";
 import RouteService from "../services/RouteService";
 import { AdType } from "../types";
+import { default as mongoose } from "mongoose";
 
 class AdController {
   async create(req: Request, res: Response) {
@@ -73,7 +74,7 @@ class AdController {
         $match: {
           $expr: {
             // @ts-ignore
-            $eq: ["user", { $toObjectId: req.user?._id }],
+            $eq: ["$user", { $toObjectId: req.user?._id }],
           },
         },
       });
