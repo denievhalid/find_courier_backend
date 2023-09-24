@@ -13,6 +13,11 @@ export default configureRoutes([
     actions: [AdsController.getList],
   },
   {
+    path: "/getOwnList",
+    method: "get",
+    actions: [AdsController.getOwnList],
+  },
+  {
     path: "/:id",
     method: "get",
     actions: [AdsController.getOne],

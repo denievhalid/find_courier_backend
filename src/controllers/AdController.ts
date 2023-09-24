@@ -57,7 +57,26 @@ class AdController {
     const { from, to, date } = req.query;
 
     try {
-      const data = await AdService.getList();
+      const data = await AdService.getList({ $match: {} });
+
+      return res.status(200).json({ data });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async getOwnList(req: Request, res: Response) {
+    const { from, to, date } = req.query;
+
+    try {
+      const data = await AdService.getList({
+        $match: {
+          $expr: {
+            // @ts-ignore
+            $eq: ["$user", { $toObjectId: req.user }],
+          },
+        },
+      });
 
       return res.status(200).json({ data });
     } catch (err) {

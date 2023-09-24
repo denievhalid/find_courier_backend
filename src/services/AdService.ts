@@ -1,6 +1,6 @@
 import AdModel from "../models/AdModel";
 import { AdType } from "../types";
-import { FilterQuery, Types, UpdateQuery } from "mongoose";
+import { FilterQuery, PipelineStage, Types, UpdateQuery } from "mongoose";
 
 class AdService<T> {
   create(payload: T) {
@@ -21,8 +21,9 @@ class AdService<T> {
       });
   }
 
-  getList(filter?: T) {
+  getList(filter: PipelineStage) {
     return AdModel.aggregate([
+      filter,
       {
         $sort: { _id: -1 },
       },

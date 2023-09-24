@@ -17,7 +17,7 @@ export type AdType = {
     uri: string;
   };
   images: Array<{ uri: string }>;
-  price: string;
+  price: number;
   user: UserType;
   weight: string;
   status: "pending" | "approved" | "rejected";
